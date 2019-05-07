@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      لیست دامها
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-content padding>
+    <div class="item-container" *ngFor="let device of devices" (click)="navToGoatsDetailsPage(employee)">
+      <ion-grid style="direction: rtl">
+        <ion-row>
+          <ion-col col-10>
+            نام دستگاه: <span class="text-right"> {{ device.name }} </span>
+          </ion-col>
+          <ion-col class="service-icon-wrapper" col-1>
+            <ion-icon [style.color]="device.isActive ? 'rgb(17, 175, 23)' : 'rgb(172, 172, 172)'" name="checkmark-circle" (click)="emitOKEvent()"></ion-icon>
+          </ion-col>
+          <ion-col class="service-icon-wrapper" col-1>
+            <ion-icon [style.color]="!device.isActive ? 'rgb(250, 34, 34)' : 'rgb(172, 172, 172)'" name="remove-circle" (click)="emitFailedEvent()"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-8 class="title-text">
+            آی دی: <span class="text-right"> {{ device.id }} </span>
+          </ion-col>
+          <ion-col col-4 class="title-text">
+            نسخه برنامه: <span class="text-left"> {{ device.firmware_version }} </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+  <ion-fab right bottom class="floating-action">
+    <button class="ab-btn" ion-fab color="light">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

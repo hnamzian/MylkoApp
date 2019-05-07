@@ -1,0 +1,41 @@
+<ion-content>
+  <ion-segment mode="ios" (ionChange)="changePeriod($event)" value="week">
+    <ion-segment-button value="week">
+      <ion-label>Week</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="month">
+      <ion-label>Month</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="year">
+      <ion-label>Year</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card>
+    <ion-card-header>
+      Weight Figure
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+
+    <div class="row">
+      <div style="width: 100%">
+        <h5 style="padding-top: 5px; padding-left: 10px; font-size: 14px; text-align: center; color: rgb(110, 105, 105)">
+          Current Weight
+        </h5>
+        <h5 style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">
+          32.5 <span style="font-size: 16px">Kg</span>
+        </h5>
+      </div>
+      <!-- <div style="width: 50%">
+                <h5 style="padding-top: 5px; padding-left: 10px; font-size: 14px; text-align: center; color: rgb(110, 105, 105)">
+                    Best Record
+                </h5>
+                <h5 style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">
+                    2729 <span style="font-size: 16px">Ltr</span>
+                </h5>
+            </div> -->
+    </div>
+  </ion-card>
+</ion-content>

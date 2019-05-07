@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Dairy Stats
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="row" style="margin-left: auto; margin-right: auto; width: 90%">
+            <div class="left-round-div">Week</div>
+            <div class="square-div">Month</div>        
+            <div class="right-round-div">Year</div>
+        </div> -->
+
+  <ion-card>
+    <ion-card-header>
+      Today Milking Figure
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutCanvas (click)="navToDairyDetailStats()"></canvas>
+      <div class="donut-inner">
+        <h5 style="margin-bottom: 5px; margin-top: 0; font-size: 24px; font-weight: bold; color: #1569df;">
+          2543
+          <span style="font-size: 18px">Litres</span>
+        </h5>
+        <h5 style="margin-bottom: 5px; margin-top: 0; font-size: 20px; font-weight: bold; color: #02994e;">
+          980
+          <span style="font-size: 14px">Goats</span>
+        </h5>
+      </div>
+    </ion-card-content>
+
+    <div class="row">
+      <div style="width: 100%">
+        <h5 style="padding-top: 5px; padding-left: 10px; font-size: 14px; text-align: center; color: rgb(110, 105, 105)">
+          Total Milking Time
+        </h5>
+        <h5 style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">
+          4 <span style="font-size: 16px">Hours</span>
+        </h5>
+      </div>
+    </div>
+  </ion-card>
+
+  <div class="row">
+    <ion-card style="width: 30%; height: 80px; margin-right: 1%; margin-top: 0px;">
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 16px; color: rgb(110, 105, 105)">
+        Winner
+      </h5>
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">2.4 <span style="font-size: 16px">Ltr</span></h5>
+    </ion-card>
+    <ion-card style="width: 30%; height: 80px; margin-right: 1%; margin-left: 1%;">
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 16px; color: rgb(110, 105, 105)">
+        Average
+      </h5>
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">2 <span style="font-size: 16px">Ltr</span></h5>
+    </ion-card>
+    <ion-card style="width: 30%; height: 80px; margin-right: 1%; margin-left: 1%;">
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 16px; color: rgb(110, 105, 105)">
+        Looser
+      </h5>
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">1.8 <span style="font-size: 16px">Ltr</span></h5>
+    </ion-card>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      Milkers Records
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

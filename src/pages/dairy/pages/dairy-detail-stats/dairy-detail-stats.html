@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Goaties
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment mode="ios" (ionChange)="changePeriod($event)" value="week">
+    <ion-segment-button value="week">
+      <ion-label>Week</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="month">
+      <ion-label>Month</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="year">
+      <ion-label>Year</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="bar-canvas">
+    <canvas #barCanvas></canvas>
+  </div>
+
+  <div class="row">
+    <ion-card style="width: 30%; height: 80px; margin-right: 1%; margin-top: 0px;">
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 14px; color: rgb(110, 105, 105)">
+        Best Record
+      </h5>
+      <h5 style="padding-top: 10px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">2729 <span style="font-size: 16px">Ltr</span></h5>
+    </ion-card>
+    <ion-card style="width: 30%; height: 80px; margin-right: 1%; margin-left: 1%;">
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 14px; color: rgb(110, 105, 105)">
+        Average
+      </h5>
+      <h5 style="padding-top: 10px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">2653 <span style="font-size: 16px">Ltr</span></h5>
+    </ion-card>
+    <ion-card style="width: 30%; height: 80px; margin-right: 1%; margin-left: 1%;">
+      <h5 style="padding-top: 5px; padding-left: 10px; font-size: 14px; color: rgb(110, 105, 105)">
+        Worst Record
+      </h5>
+      <h5 style="padding-top: 10px; padding-left: 10px; font-size: 22px; font-weight: bold; text-align: center; color: rgb(110, 105, 105)">2431 <span style="font-size: 16px">Ltr</span></h5>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-row>
+    <ion-col width-50 style="text-align: center">
+      <button ion-button round>
+        <div class="column">
+          <ion-icon name="share" style="text-align: center"></ion-icon>
+        </div>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,7 @@
+{
+  "name": "smart-dairy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

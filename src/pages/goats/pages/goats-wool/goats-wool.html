@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-content padding>
+    <div class="item-container" *ngFor="let entry of woolEntries" (click)="navToGoatsDetailsPage(employee)">
+      <ion-grid style="direction: rtl">
+        <ion-row>
+          <ion-col class="title-text" col-7>
+            تاریخ پشم چینی: <span class="text-right"> {{ entry.date }} </span>
+          </ion-col>
+          <ion-col class="title-text" col-5>
+            وزن پشم: <span> {{ entry.weight }} کیلوگرم </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+  <!-- <ion-fab right bottom class="floating-action">
+    <button class="ab-btn" ion-fab color="light" (click)="navToNewGoat()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab> -->
+</ion-content>

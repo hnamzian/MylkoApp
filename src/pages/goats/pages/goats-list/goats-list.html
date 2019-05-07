@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      لیست دامها
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-content padding>
+    <div class="item-container" *ngFor="let goat of goats" (click)="navToGoatsDetailsPage(employee)">
+      <ion-grid style="direction: rtl">
+        <ion-row>
+          <ion-col col-8>
+            شناسه دام: <span class="text-right"> {{ goat.id }} </span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            جنسیت: <span class="text-right"> {{ goat.gender }} </span>
+          </ion-col>
+          <ion-col col-6 class="title-text">
+            سن: <span class="text-right"> {{ goat.age }} سال </span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6 class="title-text">
+            وزن: <span class="text-right"> {{ goat.weight }} کیلوگرم </span>
+          </ion-col>
+          <ion-col col-6 class="title-text" *ngIf="goat.milkRate > 0">
+            شیردهی: <span class="text-right"> {{ goat.milkRate }} لیتر </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+  <ion-fab right bottom class="floating-action">
+    <button class="ab-btn" ion-fab color="light" (click)="navToNewGoat()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

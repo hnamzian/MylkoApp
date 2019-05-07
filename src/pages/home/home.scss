@@ -1,0 +1,51 @@
+page-home {
+  .toolbar-title {
+    height: 60px;
+    text-align: center;
+    color: rgb(112, 112, 112);
+    p {
+      margin-top: 10px;
+    }
+  }
+
+  .toolbar-background {
+    background-color: white !important;
+  }
+
+  ion-content {
+    background-color: white !important;
+  }
+
+  .menu-btn {
+    min-width: 100px;
+    min-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0%;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .btn-container {
+    background-color: rgb(246, 246, 246);
+    height: 110px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 2px rgb(207, 207, 207);
+    text-align: center;
+    font-size: 18px;
+    .menu-text-container {
+      color: rgb(112, 112, 112);
+      font-size: 14px;
+
+      ion-icon {
+        color: rgb(82, 136, 209);
+        margin-top: 30px;
+        font-size: 28px;
+      }
+      p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

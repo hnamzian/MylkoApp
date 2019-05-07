@@ -1,0 +1,40 @@
+dairy-detail-stats {
+
+    .left-round-div {
+        width:33%;
+        height:30px;
+        margin-top: 20px;
+        border: 1px solid #f8b093;
+        border-right: 0px;
+        border-radius: 15px 0px 0px 15px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #fce1d7;
+        color: #f15719;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .right-round-div {
+        width:33%;
+        height:30px;
+        margin-top: 20px;
+        border: 1px solid #f8b093;
+        border-left: 0px;
+        border-radius: 0px 15px 15px 0px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+
+    .square-div {
+        width:33%;
+        height:30px;
+        margin-top: 20px;
+        border: 1px solid #f8b093;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    
+}

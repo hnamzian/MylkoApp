@@ -1,0 +1,18 @@
+profile-page {
+  ion-content {
+    background-color: rgb(246, 246, 246) !important;
+  }
+
+  .form-container {
+    .text-container {
+      span {
+        margin-left: 10px;
+        color: rgb(87, 180, 239);
+      }
+
+      .span-left {
+        float: left;
+      }
+    }
+  }
+}

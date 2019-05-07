@@ -1,0 +1,40 @@
+<!-- <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let type of deviceTypes" style="cursor: pointer" (click)="navToDeviceList(type)">
+      <ion-avatar item-start>
+        <img [src]="type.icon" />
+      </ion-avatar>
+      <h2>{{ type.name }}</h2>
+      <h3>{{ type.number }} item</h3>
+    </ion-item>
+  </ion-list>
+</ion-content> -->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      لیست دامها
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-content padding>
+    <div class="item-container" *ngFor="let type of deviceTypes" style="cursor: pointer" (click)="navToDeviceList(type)">
+      <ion-grid style="direction: rtl">
+        <ion-row>
+          <ion-col col-10 class="title-text">
+            نام دستگاه: <span class="text-right"> {{ type.name }} </span>
+          </ion-col>
+          <ion-col col-2 class="title-text">
+            <span class="text-right"> {{ type.number }} عدد </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+  <ion-fab right bottom class="floating-action">
+    <button class="ab-btn" ion-fab color="light">
+      <ion-icon name="add" (click)="navToNewDevice()"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

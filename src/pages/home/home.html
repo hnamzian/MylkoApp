@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      میلکو
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <div class="btn-container" (click)="navToProfilePage()">
+          <div class="menu-text-container">
+            <ion-icon name="person"></ion-icon>
+            <br />
+            <p>پروفایل</p>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="btn-container" (click)="navToEmployeeListPage()">
+          <div class="menu-text-container">
+            <ion-icon name="walk"></ion-icon>
+            <br />
+            <p>کارمندان</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="btn-container" (click)="navToDairyStatsPage()">
+          <div class="menu-text-container">
+            <ion-icon name="eye"></ion-icon>
+            <br />
+            <p>دامداری</p>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="btn-container" (click)="navToGoatsListPage()">
+          <div class="menu-text-container">
+            <ion-icon name="custom-cattle"></ion-icon>
+            <br />
+            <p>دام ها</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="btn-container" (click)="navToDeviceListPage()">
+          <div class="menu-text-container">
+            <ion-icon name="speedometer"></ion-icon>
+            <br />
+            <p>دستگاه ها</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

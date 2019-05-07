@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Goats Statistics
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-tabs class="tabs-basic" tabbarPlacement="top">
+    <ion-tab tabTitle="پروفایل" [root]="goatsProfilePage"></ion-tab>
+    <ion-tab tabTitle="سلامتی" [root]="goatsHealthPage"></ion-tab>
+    <ion-tab tabTitle="شیر" [root]="goatsMilkingPage"></ion-tab>
+    <ion-tab tabTitle="وزن" [root]="goatsWeightPage"></ion-tab>
+    <ion-tab tabTitle="پشم" [root]="goatsWoolPage"></ion-tab>
+  </ion-tabs>
+</ion-content>

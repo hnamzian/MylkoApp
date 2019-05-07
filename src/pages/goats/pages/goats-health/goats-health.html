@@ -1,0 +1,121 @@
+<ion-content>
+  <ion-card (click)="expandWeightCard = !expandWeightCard">
+    <ion-list ion-item *ngIf="!expandWeightCard; else expandedWeight">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/weight.jpg" />
+      </ion-avatar>
+      <h2>Weight</h2>
+    </ion-list>
+    <ng-template #expandedWeight>
+      <img src="../../assets/imgs/weight.jpg" />
+      <ion-card-content>
+        <ion-card-title>
+          Weight
+        </ion-card-title>
+        <p>
+          {{ health.weight.birth }} Kg
+          <span>وزن تولد</span>
+        </p>
+        <p>
+          {{ health.weight.sixmonth }} Kg
+          <span>وزن 6 ماهگی</span>
+        </p>
+        <p>
+          {{ health.weight.mature }} Kg
+          <span>وزن بلوغ</span>
+        </p>
+        <p>
+          {{ health.weight.current }} Kg
+          <span>وزن فعلی</span>
+        </p>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+
+  <ion-card (click)="expandFoodCard = !expandFoodCard">
+    <ion-list ion-item *ngIf="!expandFoodCard; else expandedFood">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/cattle-food.jpg" />
+      </ion-avatar>
+      <h2>Food and Water</h2>
+    </ion-list>
+    <ng-template #expandedFood>
+      <img src="../../assets/imgs/cattle-food.jpg" />
+      <ion-card-content>
+        <ion-card-title>
+          Food And Water Consumption
+        </ion-card-title>
+        <p>
+          {{ health.food.waterAvg }} Litres
+          <span>مصرف روزانه آب</span>
+        </p>
+        <p>
+          {{ health.food.waterTimes }}
+          <span>دفعات مصرف روزانه آب</span>
+        </p>
+        <p>
+          {{ health.food.foodAvg }} Kg
+          <span>مصرف روزانه غذا</span>
+        </p>
+        <p>
+          {{ health.food.foodTimes }}
+          <span>دفعات مصرف روزانه غذا</span>
+        </p>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+
+  <ion-card (click)="expandVaccinCard = !expandVaccinCard">
+    <ion-list ion-item *ngIf="!expandVaccinCard; else expandedVaccin">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/vaccin.png" />
+      </ion-avatar>
+      <h2>Vaccins and Diseases</h2>
+    </ion-list>
+    <ng-template #expandedVaccin>
+      <img src="../../assets/imgs/vaccin.png" />
+      <ion-card-content>
+        <ion-card-title>
+          Vaccination
+        </ion-card-title>
+        <p>
+          {{ health.vaccination.vaccinDate }}
+          <span>تاریخ واکسیناسیون</span>
+        </p>
+        <p>
+          {{ health.vaccination.vaccinType }}
+          <span>نوع واکسن</span>
+        </p>
+        <p>
+          {{ health.diseases }}
+          <span>بیماری ها</span>
+        </p>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+
+  <ion-card (click)="expandBreedingCard = !expandBreedingCard">
+    <ion-list ion-item *ngIf="!expandBreedingCard; else expandedBreeding">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/breeding.jpg" />
+      </ion-avatar>
+      <h2>Mating and Breedings</h2>
+    </ion-list>
+    <ng-template #expandedBreeding>
+      <img src="../../assets/imgs/breeding.jpg" />
+      <ion-card-content>
+        <ion-card-title>
+          Mating and Breedings
+        </ion-card-title>
+        <p>
+          {{ health.mating.times }}
+          <span>دفعات جفت گیری</span>
+        </p>
+        <p>
+          {{ health.breeding.times }}
+          <span>دفعات زاد و ولد</span>
+        </p>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+</ion-content>

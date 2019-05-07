@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      کارمندان
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-content padding>
+    <div class="item-container" *ngFor="let employee of employees" (click)="navToEmployeeProfile(employee)">
+      <ion-grid style="direction: rtl">
+        <ion-row>
+          <ion-col col-5 class="location-text">
+            <p>
+              {{ employee.firstName }} <span>{{ employee.lastName }}</span>
+            </p>
+          </ion-col>
+          <ion-col col-4>
+            <p>{{ employee.section }}</p>
+          </ion-col>
+          <ion-col class="service-icon-wrapper" col-1></ion-col>
+          <ion-col class="service-icon-wrapper" col-1>
+            <ion-icon [style.color]="employee.active ? 'rgb(17, 175, 23)' : 'rgb(172, 172, 172)'" name="checkmark-circle" (click)="emitOKEvent()"></ion-icon>
+          </ion-col>
+          <ion-col class="service-icon-wrapper" col-1>
+            <ion-icon [style.color]="!employee.active ? 'rgb(250, 34, 34)' : 'rgb(172, 172, 172)'" name="remove-circle" (click)="emitFailedEvent()"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+  <ion-fab right bottom class="floating-action">
+    <button class="ab-btn" ion-fab color="light" (click)="navToNewEmployee()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
