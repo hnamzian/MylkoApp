@@ -19,7 +19,7 @@ import { TokenStorage } from "../storage/token/token";
 
 @NgModule({
   declarations: [MyApp, HomePage],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule, IonicStorageModule, AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
+  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule, IonicStorageModule.forRoot(), AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
   providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, SMSProvider, TokenStorage]
