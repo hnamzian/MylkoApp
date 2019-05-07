@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginPage } from "../login/login";
 import { CheckVerificationCodePage } from "../check-verification-code/check-verification-code";
 import { SMSProvider } from "../../../../providers/sms";
+import { TokenStorage } from "../../../../storage/token/token";
 
 @Component({
   selector: "register-page",
@@ -15,7 +16,7 @@ export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public smsProvider: SMSProvider) {}
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public smsProvider: SMSProvider, public tokenStorage: TokenStorage) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -29,7 +30,9 @@ export class RegisterPage implements OnInit {
 
   async getSMSToken() {
     const mobile = this.registerForm.get("mobileNumber").value;
-    this.smsProvider.getSMSToken(mobile).subscribe(console.log);
+    this.smsProvider.getSMSToken(mobile).subscribe(async smsToken => {
+      await this.tokenStorage.setSMSToken(smsToken.smsToken);
+    });
   }
 
   formErrorCheck() {
