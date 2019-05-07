@@ -37,7 +37,7 @@ export class RegisterPage implements OnInit {
         console.log(result);
         if (result && result.success) {
           await this.tokenStorage.setSMSToken(result.smsToken);
-          return this.navCtrl.push(CheckVerificationCodePage, { mobile, token: result.smsToken });
+          return this.navCtrl.push(CheckVerificationCodePage, { mobile, code: result.smsCode });
         } else if (result && !result.success) {
           this.showToast(result.message);
         }
