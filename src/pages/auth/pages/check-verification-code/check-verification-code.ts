@@ -9,6 +9,13 @@ import { RegisterPage } from "../register/register";
 export class CheckVerificationCodePage {
   mobile;
 
+  codeInput0;
+  codeInput1;
+  codeInput2;
+  codeInput3;
+  codeInput4;
+  codeInput5;
+
   timer = 59;
   interval;
 
@@ -20,6 +27,10 @@ export class CheckVerificationCodePage {
     this.showToast(code);
 
     this.mobile = this.navParams.get("mobile");
+  }
+
+  nextCode(nextElement: HTMLElement) {
+    nextElement.focus();
   }
 
   startCountdown() {
