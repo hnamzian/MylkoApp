@@ -13,6 +13,7 @@ export class CheckVerificationCodePage {
   constructor(public navParams: NavParams, public toastCtrl: ToastController) {
     // just for dev mode
     const code = this.navParams.get("code");
+    this.showToast(code);
 
     this.mobile = this.navParams.get("mobile");
   }
