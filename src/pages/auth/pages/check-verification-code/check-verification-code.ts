@@ -42,6 +42,12 @@ export class CheckVerificationCodePage {
     return code;
   }
 
+  checkCode() {
+    const code = this.catCodes();
+
+    this.stopCountdown();
+  }
+
   startCountdown() {
     this.interval = setInterval(() => {
       if (this.timer > 0) {
