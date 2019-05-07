@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavParams } from "ionic-angular";
+import { NavParams, ToastController, Toast } from "ionic-angular";
 
 @Component({
   selector: "check-verification-code",
@@ -8,12 +8,26 @@ import { NavParams } from "ionic-angular";
 export class CheckVerificationCodePage {
   mobile;
 
-  constructor(public navParams: NavParams) {
+  toast: Toast;
+
+  constructor(public navParams: NavParams, public toastCtrl: ToastController) {
     // just for dev mode
     const code = this.navParams.get("code");
 
     this.mobile = this.navParams.get("mobile");
+  }
 
-    console.log(this.mobile, code);
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
+  }
+
+  dismissToast() {
+    this.toast.dismiss();
   }
 }
