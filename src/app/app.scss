@@ -48,6 +48,58 @@
     background-color: white;
   }
 
+  .password-input {
+    text-align: left !important;
+    direction: ltr !important;
+  }
+
+  .email-icon-wrapper {
+    width: fit-content;
+  }
+
+  ion-item.phone-prefix-wrapper {
+    .input-wrapper {
+      border-right: none !important;
+    }
+  }
+
+  .phone-prefix-label {
+    width: fit-content !important;
+    direction: ltr !important;
+    text-align: left !important;
+    font-size: 16px !important;
+  }
+
+  .phone-input {
+    direction: ltr !important;
+    text-align: left !important;
+  }
+
+  ion-item.password-input-item {
+    .input-wrapper {
+      border-right: none !important;
+    }
+  }
+
+  ion-item.email-input-item {
+    .input-wrapper {
+      border-right: none !important;
+    }
+    .email-icon-wrapper {
+      width: fit-content !important;
+    }
+    .email-input {
+      direction: ltr;
+      text-align: left;
+    }
+  }
+
+  ion-icon.prep-input-icon {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    font-size: 22px;
+  }
+
   // fab
   .floating-action {
     right: 25px;
