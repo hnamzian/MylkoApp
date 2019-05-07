@@ -30,8 +30,14 @@ export class RegisterPage implements OnInit {
 
   async getSMSToken() {
     const mobile = this.registerForm.get("mobileNumber").value;
-    this.smsProvider.getSMSToken(mobile).subscribe(async smsToken => {
-      await this.tokenStorage.setSMSToken(smsToken.smsToken);
+    this.smsProvider.getSMSToken(mobile).subscribe(async result => {
+      if (result && result.success) {
+        await this.tokenStorage.setSMSToken(result.smsToken);
+        this.navCtrl.push(CheckVerificationCodePage, { mobile, token: result.smsToken });
+      } else if (result && !result.success) {
+        console.log(result.message);
+      }
+      console.log("خطا در  برقراری ارتباط");
     });
   }
 
