@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { StatusBar } from "@ionic-native/status-bar";
-
+import { HttpClientModule } from "@angular/common/http";
 import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { AuthModule } from "../pages/auth/auth.module";
@@ -13,12 +13,11 @@ import { EmployeesModule } from "../pages/employees/employees.module";
 import { GoatsModule } from "../pages/goats/goats.module";
 import { UserModule } from "../pages/user/user.module";
 import { CoreModule } from "../pages/core/core.module";
-
 import { SMSProvider } from "../providers/sms";
 
 @NgModule({
   declarations: [MyApp, HomePage],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp), AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
+  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule, AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
   providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, SMSProvider]
