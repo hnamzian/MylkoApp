@@ -8,6 +8,9 @@ import { NavParams, ToastController, Toast } from "ionic-angular";
 export class CheckVerificationCodePage {
   mobile;
 
+  timer = 59;
+  interval;
+
   toast: Toast;
 
   constructor(public navParams: NavParams, public toastCtrl: ToastController) {
@@ -16,6 +19,20 @@ export class CheckVerificationCodePage {
     this.showToast(code);
 
     this.mobile = this.navParams.get("mobile");
+  }
+
+  startCountdown() {
+    this.interval = setInterval(() => {
+      if (this.timer > 0) {
+        this.timer--;
+        return;
+      }
+      clearInterval(this.interval);
+    }, 1000);
+  }
+
+  stopCountdown() {
+    clearInterval(this.interval);
   }
 
   showToast(message) {
