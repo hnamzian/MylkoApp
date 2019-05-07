@@ -33,6 +33,10 @@ export class CheckVerificationCodePage {
     nextElement.focus();
   }
 
+  isNumber(value) {
+    return true;
+  }
+
   startCountdown() {
     this.interval = setInterval(() => {
       if (this.timer > 0) {
