@@ -16,7 +16,9 @@ export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public smsProvider: SMSProvider, public tokenStorage: TokenStorage) {}
+  toast: Toast;
+
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public toastCtrl: ToastController, public smsProvider: SMSProvider, public tokenStorage: TokenStorage) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -52,5 +54,19 @@ export class RegisterPage implements OnInit {
       ? "شماره همراه نامعتبر است"
       : "خطا";
     return message;
+  }
+
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
+  }
+
+  dismissToast() {
+    this.toast.dismiss();
   }
 }
