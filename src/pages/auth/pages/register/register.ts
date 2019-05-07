@@ -3,6 +3,7 @@ import { NavController, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginPage } from "../login/login";
 import { CheckVerificationCodePage } from "../check-verification-code/check-verification-code";
+import { SMSProvider } from "../../../../providers/sms";
 
 @Component({
   selector: "register-page",
@@ -14,9 +15,7 @@ export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
 
-  toast: Toast;
-
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder) {}
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public smsProvider: SMSProvider) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -28,8 +27,9 @@ export class RegisterPage implements OnInit {
     this.navCtrl.push(LoginPage);
   }
 
-  getSMSToken() {
-    
+  async getSMSToken() {
+    const mobile = this.registerForm.get("mobileNumber").value;
+    this.smsProvider.getSMSToken(mobile).subscribe(console.log);
   }
 
   formErrorCheck() {
@@ -44,6 +44,4 @@ export class RegisterPage implements OnInit {
       : "خطا";
     return message;
   }
-
-  
 }
