@@ -57,14 +57,17 @@ export class CheckVerificationCodePage {
 
     let smsRsp$ = await this.authProvider.verifySMSToken(code);
 
-    smsRsp$.subscribe(async result => {
-      if (result && result.success) {
-        await this.tokenStorage.setAuthToken(result.token);
-        await this.userStorage.setUser(result.user);
-      } else {
-        console.log(result.message);
-      }
-    });
+    smsRsp$.subscribe(
+      async result => {
+        if (result && result.success) {
+          await this.tokenStorage.setAuthToken(result.token);
+          await this.userStorage.setUser(result.user);
+        } else if (result && !result.success) {
+          console.log(result.message);
+        }
+      },
+      error => console.log("خطا در  برقراری ارتباط")
+    );
 
     this.stopCountdown();
   }
