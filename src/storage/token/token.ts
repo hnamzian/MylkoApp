@@ -7,26 +7,25 @@ export class TokenStorage {
 
   async setSMSToken(token) {
     await this.storage.ready();
-    const result = await this.storage.set("SMSToken", token)
-    return result
+    const result = await this.storage.set("SMSToken", token);
+    return result;
   }
 
   async getSMSToken() {
     await this.storage.ready();
-    const result = await this.storage.get("SMSToken")
-    return result
+    const result = await this.storage.get("SMSToken");
+    return result;
   }
 
   async setAuthToken(token) {
     await this.storage.ready();
-    const result = await this.storage.set("AuthToken", token)
-    return result
+    const result = await this.storage.set("AuthToken", token);
+    return result;
   }
 
   async getAuthToken() {
     await this.storage.ready();
-    const result = await this.storage.get("AuthToken")
-    return result
+    const result = await this.storage.get("AuthToken");
+    return result;
   }
-
 }
