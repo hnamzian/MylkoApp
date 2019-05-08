@@ -7,6 +7,7 @@ import { SMSRQ, SMSRSP } from "../models/sms";
 import { TokenStorage } from "../storage/token";
 import { API } from "../models/api";
 import { AuthRSP } from "../models/auth";
+import { UserAPI } from "../models/user";
 
 @Injectable()
 export class AuthProvider {
@@ -34,5 +35,22 @@ export class AuthProvider {
     };
 
     return this.http.post(url, { smsCode }, httpOptions).pipe(map((result: AuthRSP) => result));
+  }
+
+  async authByToken() {
+    let url = `${this.baseUrl}/`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    console.log(token);
+
+    if (!token) return Observable.of({} as UserAPI);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: token
+      })
+    };
+
+    return this.http.get(url, httpOptions).pipe(map((result: UserAPI) => result));
   }
 }
