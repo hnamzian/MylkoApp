@@ -17,4 +17,10 @@ export class TokenStorage {
     return result
   }
 
+  async setAuthToken(token) {
+    await this.storage.ready();
+    const result = await this.storage.set("AuthToken", token)
+    return result
+  }
+
 }
