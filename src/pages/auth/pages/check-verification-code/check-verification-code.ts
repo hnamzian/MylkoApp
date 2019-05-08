@@ -4,6 +4,7 @@ import { AuthProvider } from "../../../../providers/auth";
 import { TokenStorage } from "../../../../storage/token";
 import { LoginPage } from "../login/login";
 import { UserStorage } from "../../../../storage/user";
+import { HomePage } from "../../../home/home";
 
 @Component({
   selector: "check-verification-code",
@@ -62,6 +63,7 @@ export class CheckVerificationCodePage {
         if (result && result.success) {
           await this.tokenStorage.setAuthToken(result.token);
           await this.userStorage.setUser(result.user);
+          this.navCtrl.push(HomePage, { user: result.user });
         } else if (result && !result.success) {
           this.showToast(result.message);
         }
