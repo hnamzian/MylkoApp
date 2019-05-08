@@ -8,7 +8,7 @@ import { TokenStorage } from "../storage/token/token";
 import { API } from "../models/api";
 
 @Injectable()
-export class SMSProvider {
+export class AuthProvider {
   baseUrl = `${env.BASE_URL}/auth`;
 
   constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
