@@ -14,7 +14,7 @@ import { EmployeesModule } from "../pages/employees/employees.module";
 import { GoatsModule } from "../pages/goats/goats.module";
 import { UserModule } from "../pages/user/user.module";
 import { CoreModule } from "../pages/core/core.module";
-import { SMSProvider } from "../providers/sms";
+import { AuthProvider } from "../providers/auth";
 import { TokenStorage } from "../storage/token/token";
 
 @NgModule({
@@ -22,6 +22,6 @@ import { TokenStorage } from "../storage/token/token";
   imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule, IonicStorageModule.forRoot(), AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
-  providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, SMSProvider, TokenStorage]
+  providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, AuthProvider, TokenStorage]
 })
 export class AppModule {}
