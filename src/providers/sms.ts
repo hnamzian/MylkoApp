@@ -9,7 +9,7 @@ import { API } from "../models/api";
 
 @Injectable()
 export class SMSProvider {
-  baseUrl = `${env.BASE_URL}/sms`;
+  baseUrl = `${env.BASE_URL}/auth`;
 
   constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
 
