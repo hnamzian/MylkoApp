@@ -3,7 +3,7 @@ import { NavController, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginPage } from "../login/login";
 import { CheckVerificationCodePage } from "../check-verification-code/check-verification-code";
-import { SMSProvider } from "../../../../providers/sms";
+import { AuthProvider } from "../../../../providers/auth";
 import { TokenStorage } from "../../../../storage/token/token";
 
 @Component({
@@ -18,7 +18,7 @@ export class RegisterPage implements OnInit {
 
   toast: Toast;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public toastCtrl: ToastController, public smsProvider: SMSProvider, public tokenStorage: TokenStorage) {}
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public toastCtrl: ToastController, public authProvider: AuthProvider, public tokenStorage: TokenStorage) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -32,7 +32,7 @@ export class RegisterPage implements OnInit {
 
   async getSMSToken() {
     const mobile = this.registerForm.get("mobileNumber").value;
-    this.smsProvider.getSMSToken(mobile).subscribe(
+    this.authProvider.getSMSToken(mobile).subscribe(
       async result => {
         console.log(result);
         if (result && result.success) {

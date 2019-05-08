@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams, ToastController, Toast } from "ionic-angular";
 import { RegisterPage } from "../register/register";
+import { AuthProvider } from "../../../../providers/auth";
+import { TokenStorage } from "../../../../storage/token/token";
 
 @Component({
   selector: "check-verification-code",
@@ -21,7 +23,7 @@ export class CheckVerificationCodePage {
 
   toast: Toast;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public authProvider: AuthProvider, public tokenStorage: TokenStorage) {
     // just for dev mode
     const code = this.navParams.get("code");
     this.showToast(code);
@@ -42,8 +44,18 @@ export class CheckVerificationCodePage {
     return code;
   }
 
-  checkCode() {
+  async checkCode() {
     const code = this.catCodes();
+
+    let $ = await this.authProvider.verifySMSToken(code);
+
+    $.subscribe(async result => {
+      if (result) {
+        console.log(result);        
+      } else {
+        console.log(result.message);
+      }
+    });
 
     this.stopCountdown();
   }
