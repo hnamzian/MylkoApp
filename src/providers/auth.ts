@@ -6,6 +6,7 @@ import { environment as env } from "../config/environment.dev";
 import { SMSRQ, SMSRSP } from "../models/sms";
 import { TokenStorage } from "../storage/token/token";
 import { API } from "../models/api";
+import { AuthRSP } from "../models/auth";
 
 @Injectable()
 export class AuthProvider {
@@ -24,7 +25,7 @@ export class AuthProvider {
 
     const token = (await this.tokenStorage.getSMSToken()) || false;
 
-    if (!token) return Observable.of({} as API);
+    if (!token) return Observable.of({} as AuthRSP);
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -32,6 +33,6 @@ export class AuthProvider {
       })
     };
 
-    return this.http.post(url, { smsCode }, httpOptions).pipe(map((result: API) => result));
+    return this.http.post(url, { smsCode }, httpOptions).pipe(map((result: AuthRSP) => result));
   }
 }
