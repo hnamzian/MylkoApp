@@ -16,12 +16,13 @@ import { UserModule } from "../pages/user/user.module";
 import { CoreModule } from "../pages/core/core.module";
 import { AuthProvider } from "../providers/auth";
 import { TokenStorage } from "../storage/token";
+import { UserStorage } from "../storage/user";
 
 @NgModule({
   declarations: [MyApp, HomePage],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule, IonicStorageModule.forRoot(), AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
-  providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, AuthProvider, TokenStorage]
+  providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, AuthProvider, TokenStorage, UserStorage]
 })
 export class AppModule {}
