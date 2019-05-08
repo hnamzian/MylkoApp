@@ -15,7 +15,6 @@ export class SMSProvider {
     let url = `${this.baseUrl}/`;
 
     const httpOptions = {
-      "Access-Control-Allow-Origin": "*",
       params: new HttpParams().set("mobile", mobile)
     };
 
