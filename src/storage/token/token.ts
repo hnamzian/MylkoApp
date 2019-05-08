@@ -10,4 +10,11 @@ export class TokenStorage {
     const result = await this.storage.set("SMSToken", token)
     return result
   }
+
+  async getSMSToken() {
+    await this.storage.ready();
+    const result = await this.storage.get("SMSToken")
+    return result
+  }
+
 }
