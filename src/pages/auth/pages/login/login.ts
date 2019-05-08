@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { NavController, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RegisterPage } from "../register/register";
-import { ForgetPasswordPage } from "../forget-password/forget-password";
 
 @Component({
   selector: "login-page",
@@ -24,10 +23,6 @@ export class LoginPage implements OnInit {
 
   navToRegisterPage() {
     this.navCtrl.push(RegisterPage);
-  }
-
-  navToForgetPasswordPage() {
-    this.navCtrl.push(ForgetPasswordPage);
   }
 
   loginUser() {}
