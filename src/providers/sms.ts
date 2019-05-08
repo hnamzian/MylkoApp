@@ -20,7 +20,7 @@ export class SMSProvider {
   }
 
   async verifySMSToken(smsCode) {
-    let url = `${this.baseUrl}/verify`;
+    let url = `${this.baseUrl}/verify-sms-code`;
 
     const token = (await this.tokenStorage.getSMSToken()) || false;
 
