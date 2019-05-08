@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, NavParams, ToastController, Toast } from "ionic-angular";
 import { AuthProvider } from "../../../../providers/auth";
 import { TokenStorage } from "../../../../storage/token/token";
+import { LoginPage } from "../login/login";
 
 @Component({
   selector: "check-verification-code",
@@ -50,7 +51,7 @@ export class CheckVerificationCodePage {
 
     $.subscribe(async result => {
       if (result) {
-        console.log(result);        
+        console.log(result);
       } else {
         console.log(result.message);
       }
@@ -65,7 +66,7 @@ export class CheckVerificationCodePage {
         this.timer--;
         return;
       }
-      this.navCtrl.push(RegisterPage);
+      this.navCtrl.push(LoginPage);
       clearInterval(this.interval);
     }, 1000);
   }
