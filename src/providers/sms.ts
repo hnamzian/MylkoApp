@@ -14,10 +14,6 @@ export class SMSProvider {
   getSMSToken(mobile): Observable<SMSRSP> {
     let url = `${this.baseUrl}/`;
 
-    const httpOptions = {
-      params: new HttpParams().set("mobile", mobile)
-    };
-
-    return this.http.get(url, httpOptions).pipe(map((result: SMSRSP) => result));
+    return this.http.post(url, {mobile}).pipe(map((result: SMSRSP) => result));
   }
 }
