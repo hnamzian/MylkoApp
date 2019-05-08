@@ -47,11 +47,11 @@ export class CheckVerificationCodePage {
   async checkCode() {
     const code = this.catCodes();
 
-    let $ = await this.authProvider.verifySMSToken(code);
+    let smsRsp$ = await this.authProvider.verifySMSToken(code);
 
-    $.subscribe(async result => {
-      if (result) {
-        console.log(result);
+    smsRsp$.subscribe(async result => {
+      if (result && result.success) {
+        await this.tokenStorage.setAuthToken(result.token);
       } else {
         console.log(result.message);
       }
