@@ -3,7 +3,7 @@ import { NavController, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CheckVerificationCodePage } from "../check-verification-code/check-verification-code";
 import { AuthProvider } from "../../../../providers/auth";
-import { TokenStorage } from "../../../../storage/token/token"
+import { TokenStorage } from "../../../../storage/token"
 
 @Component({
   selector: "login-page",

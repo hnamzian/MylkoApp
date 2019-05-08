@@ -15,7 +15,7 @@ import { GoatsModule } from "../pages/goats/goats.module";
 import { UserModule } from "../pages/user/user.module";
 import { CoreModule } from "../pages/core/core.module";
 import { AuthProvider } from "../providers/auth";
-import { TokenStorage } from "../storage/token/token";
+import { TokenStorage } from "../storage/token";
 
 @NgModule({
   declarations: [MyApp, HomePage],
