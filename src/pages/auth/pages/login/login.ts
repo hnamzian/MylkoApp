@@ -1,16 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { NavController, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { LoginPage } from "../login/login";
 import { CheckVerificationCodePage } from "../check-verification-code/check-verification-code";
 import { AuthProvider } from "../../../../providers/auth";
-import { TokenStorage } from "../../../../storage/token/token";
+import { TokenStorage } from "../../../../storage/token/token"
 
 @Component({
-  selector: "register-page",
-  templateUrl: "register.html"
+  selector: "login-page",
+  templateUrl: "login.html"
 })
-export class RegisterPage implements OnInit {
+export class LoginPage implements OnInit {
   headerImageUrl = "../../assets/imgs/car-login.png";
   headerTitle = "ثبت نام";
 
