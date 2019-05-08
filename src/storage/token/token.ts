@@ -23,4 +23,10 @@ export class TokenStorage {
     return result
   }
 
+  async getAuthToken() {
+    await this.storage.ready();
+    const result = await this.storage.get("AuthToken")
+    return result
+  }
+
 }
