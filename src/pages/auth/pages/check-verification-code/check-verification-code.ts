@@ -63,10 +63,10 @@ export class CheckVerificationCodePage {
           await this.tokenStorage.setAuthToken(result.token);
           await this.userStorage.setUser(result.user);
         } else if (result && !result.success) {
-          console.log(result.message);
+          this.showToast(result.message);
         }
       },
-      error => console.log("خطا در  برقراری ارتباط")
+      error => this.showToast("خطا در  برقراری ارتباط")
     );
 
     this.stopCountdown();
