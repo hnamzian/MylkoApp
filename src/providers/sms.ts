@@ -14,7 +14,7 @@ export class SMSProvider {
   constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
 
   getSMSToken(mobile): Observable<SMSRSP> {
-    let url = `${this.baseUrl}/`;
+    let url = `${this.baseUrl}/get-sms-code`;
 
     return this.http.post(url, { mobile }).pipe(map((result: SMSRSP) => result));
   }
