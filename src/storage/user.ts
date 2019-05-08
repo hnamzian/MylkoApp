@@ -10,4 +10,10 @@ export class UserStorage {
     const result = await this.storage.set("USER", user);
     return result;
   }
+
+  async getUser() {
+    await this.storage.ready();
+    const result = await this.storage.get("USER");
+    return result;
+  }
 }
