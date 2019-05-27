@@ -39,4 +39,17 @@ export class AuthProvider {
     return this.http.get(url, httpOptions).pipe(map((result: DairiesResponse) => result));
   }
 
+  async updateDairy(dairy: Dairy) {
+    let url = `${this.baseUrl}/update`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    if (!token) return Observable.of({} as DairiesResponse);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token })
+    };
+
+    return this.http.put(url, dairy, httpOptions).pipe(map((result: DairiesResponse) => result));
+  }
+
 }
