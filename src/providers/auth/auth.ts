@@ -2,12 +2,12 @@ import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Rx";
 import { map, catchError } from "rxjs/operators";
-import { environment as env } from "../config/environment.dev";
-import { SMSRQ, SMSRSP } from "../models/sms";
-import { TokenStorage } from "../storage/token";
-import { API } from "../models/api";
-import { AuthRSP } from "../models/auth";
-import { UserAPI } from "../models/user";
+import { environment as env } from "../../config/environment.dev";
+import { SMSRQ, SMSRSP } from "../../models/sms";
+import { TokenStorage } from "../../storage/token";
+import { API } from "../../models/api";
+import { AuthRSP } from "../../models/auth";
+import { UserAPI } from "../../models/user";
 
 @Injectable()
 export class AuthProvider {
