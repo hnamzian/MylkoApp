@@ -3,8 +3,27 @@ import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Rx";
 import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
+import { TokenStorage } from "../../storage/token";
+import { DairyResponse } from "../../models/dairy";
 
 @Injectable()
 export class AuthProvider {
   baseUrl = `${env.BASE_URL}/dairy`;
+
+  constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
+
+  async getDiryById(dairyId) {
+    let url = `${this.baseUrl}/`;
+
+    const token = (await this.tokenStorage.getSMSToken()) || false;
+
+    if (!token) return Observable.of({} as DairyResponse);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ SMSToken: token }),
+      params: new HttpParams().set("dairyId", dairyId)
+    };
+
+    return this.http.get(url, httpOptions).pipe(map((result: DairyResponse) => result));
+  }
 }
