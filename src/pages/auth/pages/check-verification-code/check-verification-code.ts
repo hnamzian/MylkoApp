@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams, ToastController, Toast } from "ionic-angular";
-import { AuthProvider } from "../../../../providers/auth";
+import { AuthProvider } from "../../../../providers/auth/auth";
 import { TokenStorage } from "../../../../storage/token";
 import { LoginPage } from "../login/login";
 import { UserStorage } from "../../../../storage/user";
