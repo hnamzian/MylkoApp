@@ -5,6 +5,8 @@ export interface SMSRQ {
 }
 
 export interface SMSRSP extends API {
-  smsCode: string;
-  smsToken: string;
+  sms: {
+    code: string;
+    token: string;
+  }
 }
