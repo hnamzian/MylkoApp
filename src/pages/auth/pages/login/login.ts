@@ -3,7 +3,7 @@ import { NavController, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CheckVerificationCodePage } from "../check-verification-code/check-verification-code";
 import { AuthProvider } from "../../../../providers/auth";
-import { TokenStorage } from "../../../../storage/token"
+import { TokenStorage } from "../../../../storage/token";
 
 @Component({
   selector: "login-page",
@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
   }
 
   async getSMSToken() {
-    const mobile = this.registerForm.get("mobileNumber").value;
+    const mobile = "+98" + this.registerForm.get("mobileNumber").value;
     this.authProvider.getSMSToken(mobile).subscribe(
       async result => {
         console.log(result);
