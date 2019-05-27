@@ -44,26 +44,26 @@ export class AuthProvider {
     let url = `${this.baseUrl}/update`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
-    if (!token) return Observable.of({} as DairiesResponse);
+    if (!token) return Observable.of({} as DairyResponse);
 
     const httpOptions = {
       headers: new HttpHeaders({ Authorization: token })
     };
 
-    return this.http.put(url, dairy, httpOptions).pipe(map((result: DairiesResponse) => result));
+    return this.http.put(url, dairy, httpOptions).pipe(map((result: DairyResponse) => result));
   }
 
   async addDairy(dairy: Dairy) {
     let url = `${this.baseUrl}/add`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
-    if (!token) return Observable.of({} as DairiesResponse);
+    if (!token) return Observable.of({} as DairyResponse);
 
     const httpOptions = {
       headers: new HttpHeaders({ Authorization: token })
     };
 
-    return this.http.post(url, dairy, httpOptions).pipe(map((result: DairiesResponse) => result));
+    return this.http.post(url, dairy, httpOptions).pipe(map((result: DairyResponse) => result));
   }
 
   async removeDairy(dairyId) {
@@ -79,5 +79,4 @@ export class AuthProvider {
 
     return this.http.get(url, httpOptions).pipe(map((result: API) => result));
   }
-
 }
