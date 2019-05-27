@@ -49,7 +49,13 @@ export class CheckVerificationCodePage {
   }
 
   catCodes() {
-    let code = this.codeInput0.toString() + this.codeInput1.toString() + this.codeInput2.toString() + this.codeInput3.toString() + this.codeInput4.toString() + this.codeInput5.toString();
+    let code =
+      this.codeInput0.toString() +
+      this.codeInput1.toString() +
+      this.codeInput2.toString() +
+      this.codeInput3.toString() +
+      this.codeInput4.toString() +
+      this.codeInput5.toString();
     return code;
   }
 
