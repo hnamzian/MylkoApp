@@ -38,7 +38,7 @@ export class AuthProvider {
   }
 
   async authByToken() {
-    let url = `${this.baseUrl}/`;
+    let url = `${this.baseUrl}/login`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
     if (!token) return Observable.of({} as UserAPI);
