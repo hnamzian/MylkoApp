@@ -17,7 +17,7 @@ export class MyApp {
     platform.ready().then(async () => {
       let user$ = await authProvider.authByToken();
       user$.subscribe(user => {
-        if (user.success) {
+        if (user && user.success) {
           this.rootPage = HomePage;
         } else {
           this.rootPage = LoginPage;
