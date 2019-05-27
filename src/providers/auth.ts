@@ -41,8 +41,6 @@ export class AuthProvider {
     let url = `${this.baseUrl}/`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
-    console.log(token);
-
     if (!token) return Observable.of({} as UserAPI);
 
     const httpOptions = {
