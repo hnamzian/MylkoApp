@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Rx";
 import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
 import { TokenStorage } from "../../storage/token";
-import { DairyResponse } from "../../models/dairy";
+import { DairyResponse, DairiesResponse } from "../../models/dairy";
 
 @Injectable()
 export class AuthProvider {
@@ -25,5 +25,19 @@ export class AuthProvider {
     };
 
     return this.http.get(url, httpOptions).pipe(map((result: DairyResponse) => result));
+  }
+
+  async getDairies() {
+    let url = `${this.baseUrl}/all`;
+
+    const token = (await this.tokenStorage.getSMSToken()) || false;
+
+    if (!token) return Observable.of({} as DairiesResponse);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ SMSToken: token })
+    };
+
+    return this.http.get(url, httpOptions).pipe(map((result: DairiesResponse) => result));
   }
 }
