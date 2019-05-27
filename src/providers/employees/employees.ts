@@ -40,4 +40,17 @@ export class EmployeesProvider {
     return this.http.get(url, httpOptions).pipe(map((result: EmployeesResponse) => result));
   }
 
+  async addEmployee(employee: Employee): Promise<Observable<EmployeeResponse>> {
+    let url = `${this.baseUrl}/add`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    if (!token) return Observable.of({} as EmployeeResponse);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token })
+    };
+
+    return this.http.post(url, employee, httpOptions).pipe(map((result: EmployeeResponse) => result));
+  }
+
 }
