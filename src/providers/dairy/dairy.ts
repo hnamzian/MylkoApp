@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Rx";
 import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
 import { TokenStorage } from "../../storage/token";
-import { DairyResponse, DairiesResponse } from "../../models/dairy";
+import { DairyResponse, DairiesResponse, Dairy } from "../../models/dairy";
 
 @Injectable()
 export class AuthProvider {
@@ -15,12 +15,11 @@ export class AuthProvider {
   async getDiryById(dairyId) {
     let url = `${this.baseUrl}/`;
 
-    const token = (await this.tokenStorage.getSMSToken()) || false;
-
+    const token = (await this.tokenStorage.getAuthToken()) || false;
     if (!token) return Observable.of({} as DairyResponse);
 
     const httpOptions = {
-      headers: new HttpHeaders({ SMSToken: token }),
+      headers: new HttpHeaders({ Authorization: token }),
       params: new HttpParams().set("dairyId", dairyId)
     };
 
@@ -30,14 +29,14 @@ export class AuthProvider {
   async getDairies() {
     let url = `${this.baseUrl}/all`;
 
-    const token = (await this.tokenStorage.getSMSToken()) || false;
-
+    const token = (await this.tokenStorage.getAuthToken()) || false;
     if (!token) return Observable.of({} as DairiesResponse);
 
     const httpOptions = {
-      headers: new HttpHeaders({ SMSToken: token })
+      headers: new HttpHeaders({ Authorization: token })
     };
 
     return this.http.get(url, httpOptions).pipe(map((result: DairiesResponse) => result));
   }
+
 }
