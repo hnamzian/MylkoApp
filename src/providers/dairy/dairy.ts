@@ -13,7 +13,7 @@ export class AuthProvider {
 
   constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
 
-  async getDiryById(dairyId) {
+  async getDiryById(dairyId): Promise<Observable<DairyResponse>> {
     let url = `${this.baseUrl}/`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
@@ -27,7 +27,7 @@ export class AuthProvider {
     return this.http.get(url, httpOptions).pipe(map((result: DairyResponse) => result));
   }
 
-  async getDairies() {
+  async getDairies(): Promise<Observable<DairiesResponse>> {
     let url = `${this.baseUrl}/all`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
@@ -40,7 +40,7 @@ export class AuthProvider {
     return this.http.get(url, httpOptions).pipe(map((result: DairiesResponse) => result));
   }
 
-  async updateDairy(dairy: Dairy) {
+  async updateDairy(dairy: Dairy): Promise<Observable<DairyResponse>> {
     let url = `${this.baseUrl}/update`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
@@ -53,7 +53,7 @@ export class AuthProvider {
     return this.http.put(url, dairy, httpOptions).pipe(map((result: DairyResponse) => result));
   }
 
-  async addDairy(dairy: Dairy) {
+  async addDairy(dairy: Dairy): Promise<Observable<DairyResponse>> {
     let url = `${this.baseUrl}/add`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
@@ -66,7 +66,7 @@ export class AuthProvider {
     return this.http.post(url, dairy, httpOptions).pipe(map((result: DairyResponse) => result));
   }
 
-  async removeDairy(dairyId) {
+  async removeDairy(dairyId): Promise<Observable<API>> {
     let url = `${this.baseUrl}/remove`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
