@@ -14,7 +14,7 @@ import { EmployeesModule } from "../pages/employees/employees.module";
 import { GoatsModule } from "../pages/goats/goats.module";
 import { UserModule } from "../pages/user/user.module";
 import { CoreModule } from "../pages/core/core.module";
-import { AuthProvider } from "../providers/auth";
+import { AuthProvider } from "../providers/auth/auth";
 import { TokenStorage } from "../storage/token";
 import { UserStorage } from "../storage/user";
 
