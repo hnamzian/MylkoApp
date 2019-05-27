@@ -5,6 +5,7 @@ import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
 import { TokenStorage } from "../../storage/token";
 import { EmployeeResponse, EmployeesResponse, Employee } from "../../models/employees";
+import { API } from "../../models/api";
 
 @Injectable()
 export class EmployeesProvider {
@@ -50,7 +51,9 @@ export class EmployeesProvider {
       headers: new HttpHeaders({ Authorization: token })
     };
 
-    return this.http.post(url, employee, httpOptions).pipe(map((result: EmployeeResponse) => result));
+    return this.http
+      .post(url, employee, httpOptions)
+      .pipe(map((result: EmployeeResponse) => result));
   }
 
   async updateEmployee(employee: Employee): Promise<Observable<EmployeeResponse>> {
@@ -63,7 +66,22 @@ export class EmployeesProvider {
       headers: new HttpHeaders({ Authorization: token })
     };
 
-    return this.http.put(url, employee, httpOptions).pipe(map((result: EmployeeResponse) => result));
+    return this.http
+      .put(url, employee, httpOptions)
+      .pipe(map((result: EmployeeResponse) => result));
   }
 
+  async removeEmployee(employeeId, dairyId): Promise<Observable<API>> {
+    let url = `${this.baseUrl}/remvoe`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    if (!token) return Observable.of({} as API);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token }),
+      params: new HttpParams().set("employeeId", employeeId).set("dairyId", dairyId)
+    };
+
+    return this.http.delete(url, httpOptions).pipe(map((result: API) => result));
+  }
 }
