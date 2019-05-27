@@ -1,11 +1,5 @@
 import { API } from "./api";
 
-export interface DairyRequest {
-  name: string;
-  address: string;
-  AdminId: number;
-}
-
 export interface DairyResponse extends API {
   dairy: Dairy;
 }
