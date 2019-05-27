@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Rx";
 import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
 import { TokenStorage } from "../../storage/token";
-import { EmployeeResponse } from "../../models/employees";
+import { EmployeeResponse, EmployeesResponse, Employee } from "../../models/employees";
 
 @Injectable()
 export class EmployeesProvider {
@@ -25,4 +25,19 @@ export class EmployeesProvider {
 
     return this.http.get(url, httpOptions).pipe(map((result: EmployeeResponse) => result));
   }
+
+  async getEmployees(dairyId): Promise<Observable<EmployeesResponse>> {
+    let url = `${this.baseUrl}/all`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    if (!token) return Observable.of({} as EmployeesResponse);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token }),
+      params: new HttpParams().set("dairyId", dairyId)
+    };
+
+    return this.http.get(url, httpOptions).pipe(map((result: EmployeesResponse) => result));
+  }
+
 }
