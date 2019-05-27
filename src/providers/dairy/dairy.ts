@@ -8,7 +8,7 @@ import { DairyResponse, DairiesResponse, Dairy } from "../../models/dairy";
 import { API } from "../../models/api";
 
 @Injectable()
-export class AuthProvider {
+export class DairyProvider {
   baseUrl = `${env.BASE_URL}/dairy`;
 
   constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
