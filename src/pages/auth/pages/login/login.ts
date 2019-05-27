@@ -35,8 +35,8 @@ export class LoginPage implements OnInit {
       async result => {
         console.log(result);
         if (result && result.success) {
-          await this.tokenStorage.setSMSToken(result.smsToken);
-          return this.navCtrl.push(CheckVerificationCodePage, { mobile, code: result.smsCode });
+          await this.tokenStorage.setSMSToken(result.sms.token);
+          return this.navCtrl.push(CheckVerificationCodePage, { mobile, code: result.sms.code });
         } else if (result && !result.success) {
           this.showToast(result.message);
         }
