@@ -17,7 +17,13 @@ export class LoginPage implements OnInit {
 
   toast: Toast;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public toastCtrl: ToastController, public authProvider: AuthProvider, public tokenStorage: TokenStorage) {}
+  constructor(
+    public navCtrl: NavController,
+    public formBuilder: FormBuilder,
+    public toastCtrl: ToastController,
+    public authProvider: AuthProvider,
+    public tokenStorage: TokenStorage
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
