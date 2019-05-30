@@ -86,18 +86,21 @@ export class ProfilePage implements OnInit {
 
   async _updateAdmin(admin) {
     const update$ = await this.adminProvider.updateAdmin(admin);
-    update$.subscribe(
-      result => {
-        if (result && result.success) {
-          this.admin = result.admin;
-        } else if (result && !result.success) {
-          console.log(result.message);
+    return new Promise((resolve, reject) => {
+      update$.subscribe(
+        result => {
+          if (result && result.success) {
+            this.admin = result.admin;
+            resolve("Update Successful")
+          } else if (result && !result.success) {
+            reject(result.message);
+          }
+        },
+        error => {
+          reject(error.error);
         }
-      },
-      error => {
-        console.log(error.error);
-      }
-    );
+      );
+    })
   }
   
   showToast(message) {
