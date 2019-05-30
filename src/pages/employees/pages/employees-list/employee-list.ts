@@ -26,7 +26,7 @@ export class EmployeeListPage implements OnInit {
   async getEmployees() {
     const dairy = await this._getDairy();
     const employees$ = await this._getEmployees$(dairy.id);
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       employees$.subscribe(
         result => {
           if (result && result.success) {
@@ -35,7 +35,7 @@ export class EmployeeListPage implements OnInit {
           }
         },
         error => {
-          resolve(error.error.message);
+          reject(error.error.message);
         }
       );
     });
