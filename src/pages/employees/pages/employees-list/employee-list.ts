@@ -51,7 +51,7 @@ export class EmployeeListPage {
     },
   ];
 
-  constructor(navParams: NavParams, public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {}
 
   navToEmployeeProfile(employee) {
     this.navCtrl.push(EmployeeProfilePage, { employee });
