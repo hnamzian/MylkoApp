@@ -35,6 +35,18 @@ export class ProfilePage implements OnInit {
 
   async _getAdmin() {
     const admin$ = await this.adminProvider.getAdmin();
-    admin$.subscribe(console.log);
+    admin$.subscribe(
+      result => {
+        if (result && result.success) {
+          this.admin = result.admin;
+          console.log(this.admin);
+        } else if (result && !result.success) {
+          console.log(result.message);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
