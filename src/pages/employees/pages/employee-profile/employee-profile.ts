@@ -3,6 +3,7 @@ import { NavController, NavParams, Toast, ToastController } from "ionic-angular"
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from "../../../../models/employees";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
+import { EmployeeListPage } from "../employees-list/employee-list";
 
 @Component({
   selector: "employee-profile",
@@ -38,6 +39,7 @@ export class EmployeeProfilePage implements OnInit {
     try {
       const updateMessage = await this._updateEmployee(employee);
       this.showToast(updateMessage);
+      this.navCtrl.push(EmployeeListPage);
     } catch (ex) {
       this.showToast(ex);
     }
