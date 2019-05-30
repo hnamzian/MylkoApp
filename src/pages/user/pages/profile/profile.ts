@@ -30,7 +30,7 @@ export class ProfilePage implements OnInit {
 
   async updateProfile() {
     let admin = { id: this.admin.id, ...this._getProfileForm() };
-    await this._updateAdmin(admin);
+    const updateMessage = await this._updateAdmin(admin);
   }
 
   _initProfileForm() {
@@ -91,18 +91,18 @@ export class ProfilePage implements OnInit {
         result => {
           if (result && result.success) {
             this.admin = result.admin;
-            resolve("Update Successful")
+            resolve("Update Successful");
           } else if (result && !result.success) {
-            reject(result.message);
+            resolve(result.message);
           }
         },
         error => {
-          reject(error.error);
+          resolve(error.error.message);
         }
       );
-    })
+    });
   }
-  
+
   showToast(message) {
     this.toast = this.toastCtrl.create({
       message: message,
