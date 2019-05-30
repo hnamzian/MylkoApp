@@ -21,14 +21,18 @@ export class EmployeeProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.employeeForm = this.formBuilder.group({
-      firstName: [this.employee.firstName, Validators.required],
-      lastName: [this.employee.lastName, Validators.required],
-      mobile: [this.employee.phone, Validators.required],
-      email: [this.employee.email],
-      hiringDate: [this.employee.hiringDate, Validators.required]
-    });
+    this._setEmployeeForm(this.employee);
   }
 
   updateProfile() {}
+
+  _setEmployeeForm(employee: Employee) {
+    this.employeeForm = this.formBuilder.group({
+      firstName: [employee.firstName, Validators.required],
+      lastName: [employee.lastName, Validators.required],
+      mobile: [employee.mobile, Validators.required],
+      email: [employee.email],
+      hiringDate: [employee.hiringDate, Validators.required]
+    });
+  }
 }
