@@ -31,6 +31,7 @@ export class EmployeeProfilePage implements OnInit {
     this.employeeForm = this.formBuilder.group({
       firstName: [employee.firstName, Validators.required],
       lastName: [employee.lastName, Validators.required],
+      position: [employee.position],
       mobile: [employee.mobile, Validators.required],
       email: [employee.email],
       hiringDate: [employee.hiringDate, Validators.required]
@@ -41,6 +42,7 @@ export class EmployeeProfilePage implements OnInit {
     return {
       firstName: this.employeeForm.get("firstName").value,
       lastName: this.employeeForm.get("lastName").value,
+      position: this.employeeForm.get("position").value,
       mobile: this.employeeForm.get("mobile").value,
       email: this.employeeForm.get("email").value,
       hiringDate: this.employeeForm.get("hiringDate").value
