@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { EmployeeProfilePage } from "../employee-profile/employee-profile";
 import { NewEmployeePage } from "../new-employee/new-employee";
+import { EmployeesProvider } from "../../../../providers/employees/employees";
 
 @Component({
   selector: "employee-list",
@@ -48,10 +49,10 @@ export class EmployeeListPage {
       active: false,
       phone: "09246348712",
       hiringDate: "1/1/1398"
-    },
+    }
   ];
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private employeesProvider: EmployeesProvider) {}
 
   navToEmployeeProfile(employee) {
     this.navCtrl.push(EmployeeProfilePage, { employee });
