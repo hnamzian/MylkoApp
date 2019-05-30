@@ -36,9 +36,10 @@ export class EmployeeProfilePage implements OnInit {
     };
 
     try {
-      await this._updateEmployee(employee);
+      const updateMessage = await this._updateEmployee(employee);
+      this.showToast(updateMessage);
     } catch (ex) {
-      console.log(ex);
+      this.showToast(ex);
     }
   }
 
