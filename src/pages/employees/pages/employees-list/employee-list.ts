@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Toast, ToastController } from "ionic-angular";
 import { EmployeeProfilePage } from "../employee-profile/employee-profile";
 import { NewEmployeePage } from "../new-employee/new-employee";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
@@ -13,10 +13,13 @@ import { Employee } from "../../../../models/employees";
 export class EmployeeListPage implements OnInit {
   employees: Employee[];
 
+  toast: Toast;
+
   constructor(
     private navCtrl: NavController,
     private employeesProvider: EmployeesProvider,
-    private dairyStorage: DairyStorage
+    private dairyStorage: DairyStorage,
+    private toastCtrl: ToastController
   ) {}
 
   async ngOnInit() {
@@ -61,5 +64,19 @@ export class EmployeeListPage implements OnInit {
   async _getEmployees$(dairyId) {
     const employees$ = await this.employeesProvider.getEmployees(dairyId);
     return employees$;
+  }
+
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
+  }
+
+  hideToast() {
+    this.toast.dismiss();
   }
 }
