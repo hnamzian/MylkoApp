@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Employee } from "../../../../models/employees";
 
 @Component({
   selector: "employee-profile",
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class EmployeeProfilePage implements OnInit {
   employeeForm: FormGroup;
-  employee;
+  employee: Employee;
 
   constructor(
     navParams: NavParams,
