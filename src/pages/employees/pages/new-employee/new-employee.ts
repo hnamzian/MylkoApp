@@ -10,11 +10,7 @@ import { Employee } from "../../../../models/employees";
 export class NewEmployeePage {
   employeeForm: FormGroup;
 
-  constructor(
-    navParams: NavParams,
-    public navCtrl: NavController,
-    public formBuilder: FormBuilder
-  ) {}
+  constructor(private navCtrl: NavController, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this._initEmployeeForm();
