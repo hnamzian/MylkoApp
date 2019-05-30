@@ -25,6 +25,8 @@ export class DairyProfilePage implements OnInit {
 
     const message = await this._getDairy();
     this.showToast(message);
+
+    this._setProfileForm(this.dairy);
   }
 
   async updateDairy() {
