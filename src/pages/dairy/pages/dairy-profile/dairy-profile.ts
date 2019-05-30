@@ -27,6 +27,11 @@ export class DairyProfilePage implements OnInit {
     this.showToast(message);
   }
 
+  async updateDairy() {
+    const dairy = this._getDairyProfileForm();
+    await this._updateDairy(dairy);
+  }
+
   _initDairyProfileForm() {
     this.dairyProfileForm = this.formBuilder.group({
       dairyName: ["", Validators.required],
@@ -59,7 +64,9 @@ export class DairyProfilePage implements OnInit {
   }
 
   async _updateDairy(dairy: Dairy) {
-    const update$ = await this.dairyProvider.updateDairy(dairy);
+    let update$;
+    if (dairy.id) update$ = await this.dairyProvider.updateDairy(dairy);
+    else update$ = await this.dairyProvider.addDairy(dairy);
     update$.subscribe(console.log);
   }
 
