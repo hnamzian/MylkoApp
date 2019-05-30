@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DairyProvider } from "../../../../providers/dairy/dairy";
 import { Dairy } from "../../../../models/dairy";
 import { Toast, ToastController } from "ionic-angular";
+import { DairyStorage } from "../../../../storage/dairy";
 
 @Component({
   selector: "dairy-profile",
@@ -17,7 +18,8 @@ export class DairyProfilePage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastCtrl: ToastController,
-    private dairyProvider: DairyProvider
+    private dairyProvider: DairyProvider,
+    private dairyStorage: DairyStorage
   ) {}
 
   async ngOnInit() {
@@ -25,6 +27,8 @@ export class DairyProfilePage implements OnInit {
 
     const message = await this._getDairy();
     this.showToast(message);
+
+    await this.dairyStorage.setDairy(this.dairy);
 
     this._setProfileForm(this.dairy);
   }
