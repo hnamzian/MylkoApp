@@ -26,15 +26,16 @@ export class ProfilePage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this._getAdmin();
     this.profileForm = this.formBuilder.group({
-      firstName: [this.user.firstName, Validators.required],
-      lastName: [this.user.lastName, Validators.required],
-      dairyName: [this.user.dairyName, Validators.required],
-      mobile: [this.user.mobile, Validators.required],
-      email: [this.user.email],
-      address: [this.user.address, Validators.required]
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      dairyName: ["", Validators.required],
+      mobile: ["", Validators.required],
+      email: [""],
+      address: ["", Validators.required]
     });
+
+    await this._getAdmin();
   }
 
   updateProfile() {}
