@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Toast, ToastController } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from "../../../../models/employees";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
@@ -12,9 +12,12 @@ import { DairyStorage } from "../../../../storage/dairy";
 export class NewEmployeePage {
   employeeForm: FormGroup;
 
+  toast: Toast;
+
   constructor(
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
+    private toastCtrl: ToastController,
     private dairyStorage: DairyStorage,
     private employeesProvider: EmployeesProvider
   ) {}
@@ -70,5 +73,19 @@ export class NewEmployeePage {
     try {
       const addMessage = await this._addEmployee(employee);
     } catch (ex) {}
+  }
+
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
+  }
+
+  hideToast() {
+    this.toast.dismiss();
   }
 }
