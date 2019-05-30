@@ -31,7 +31,6 @@ export class DairyProfilePage implements OnInit {
     this.dairyProfileForm = this.formBuilder.group({
       dairyName: ["", Validators.required],
       address: ["", Validators.required],
-      dairyMan: ["", Validators.required]
     });
   }
 
