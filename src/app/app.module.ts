@@ -20,6 +20,7 @@ import { DairyProvider } from "../providers/dairy/dairy";
 import { EmployeesProvider } from "../providers/employees/employees";
 import { TokenStorage } from "../storage/token";
 import { UserStorage } from "../storage/user";
+import { DairyStorage } from "../storage/dairy";
 
 @NgModule({
   declarations: [MyApp, HomePage],
@@ -47,7 +48,8 @@ import { UserStorage } from "../storage/user";
     DairyProvider,
     EmployeesProvider,
     TokenStorage,
-    UserStorage
+    UserStorage,
+    DairyStorage
   ]
 })
 export class AppModule {}
