@@ -1,9 +1,9 @@
 import { API } from "./api";
-import { USER } from "./user";
+import { ADMIN } from "./admin";
 
 export interface AuthRSP {
   success: boolean;
   message: string;
-  user: USER;
+  admin: ADMIN;
   token: string;
 }
