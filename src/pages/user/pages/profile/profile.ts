@@ -26,14 +26,7 @@ export class ProfilePage implements OnInit {
   }
 
   async updateProfile() {
-    let admin = {
-      id: this.admin.id,
-      firstName: this.profileForm.get("firstName").value || "",
-      lastName: this.profileForm.get("lastName").value || "",
-      mobile: this.profileForm.get("mobile").value || "",
-      email: this.profileForm.get("email").value || "",
-      address: this.profileForm.get("address").value || ""
-    } as ADMIN;
+    let admin = { id: this.admin.id, ...this._getProfileForm() };
     const update$ = await this.adminProvider.updateAdmin(admin);
     update$.subscribe(
       result => {
@@ -67,6 +60,16 @@ export class ProfilePage implements OnInit {
       email: admin.email,
       address: admin.address
     });
+  }
+
+  _getProfileForm() {
+    return {
+      firstName: this.profileForm.get("firstName").value || "",
+      lastName: this.profileForm.get("lastName").value || "",
+      mobile: this.profileForm.get("mobile").value || "",
+      email: this.profileForm.get("email").value || "",
+      address: this.profileForm.get("address").value || ""
+    } as ADMIN;
   }
 
   async _getAdmin() {
