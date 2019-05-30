@@ -32,4 +32,6 @@ export class HomePage {
   navToProfilePage() {
     this.navCtrl.push(ProfilePage);
   }
+
+  navToDairyProfilePage() {}
 }
