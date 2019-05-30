@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from "../../../../models/employees";
+import { EmployeesProvider } from "../../../../providers/employees/employees";
+import { DairyStorage } from "../../../../storage/dairy";
 
 @Component({
   selector: "new-employee",
@@ -10,7 +12,11 @@ import { Employee } from "../../../../models/employees";
 export class NewEmployeePage {
   employeeForm: FormGroup;
 
-  constructor(private navCtrl: NavController, private formBuilder: FormBuilder) {}
+  constructor(
+    private navCtrl: NavController,
+    private formBuilder: FormBuilder,
+    private dairyStorage: DairyStorage
+  ) {}
 
   ngOnInit() {
     this._initEmployeeForm();
@@ -36,6 +42,11 @@ export class NewEmployeePage {
       email: this.employeeForm.get("email").value || "",
       hiringDate: this.employeeForm.get("hiringDate").value || ""
     } as Employee;
+  }
+
+  async _getDairy() {
+    const dairy = await this.dairyStorage.getDairy();
+    return dairy;
   }
 
   addEmployee() {
