@@ -35,18 +35,22 @@ export class ProfilePage implements OnInit {
 
   async _getAdmin() {
     const admin$ = await this.adminProvider.getAdmin();
-    admin$.subscribe(
-      result => {
-        if (result && result.success) {
-          this.admin = result.admin;
-          console.log(this.admin);
-        } else if (result && !result.success) {
-          console.log(result.message);
+    return new Promise((resolve, reject) => {
+      admin$.subscribe(
+        result => {
+          if (result && result.success) {
+            this.admin = result.admin;
+            resolve(this.admin);
+          } else if (result && !result.success) {
+            console.log(result.message);
+            reject(result.message);
+          }
+        },
+        error => {
+          console.log(error);
+          reject(error);
         }
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      );
+    });
   }
 }
