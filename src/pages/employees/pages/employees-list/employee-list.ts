@@ -3,6 +3,7 @@ import { NavController, NavParams } from "ionic-angular";
 import { EmployeeProfilePage } from "../employee-profile/employee-profile";
 import { NewEmployeePage } from "../new-employee/new-employee";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
+import { DairyStorage } from "../../../../storage/dairy";
 
 @Component({
   selector: "employee-list",
@@ -52,10 +53,14 @@ export class EmployeeListPage implements OnInit {
     }
   ];
 
-  constructor(private navCtrl: NavController, private employeesProvider: EmployeesProvider) {}
+  constructor(
+    private navCtrl: NavController,
+    private employeesProvider: EmployeesProvider,
+    private dairyStorage: DairyStorage
+  ) {}
 
   async ngOnInit() {}
-  
+
   navToEmployeeProfile(employee) {
     this.navCtrl.push(EmployeeProfilePage, { employee });
   }
@@ -63,4 +68,10 @@ export class EmployeeListPage implements OnInit {
   navToNewEmployee() {
     this.navCtrl.push(NewEmployeePage);
   }
+
+  async _getDairy() {
+    const dairy = await this.dairyStorage.getDairy();
+    return dairy;
+  }
+
 }
