@@ -27,19 +27,7 @@ export class ProfilePage implements OnInit {
 
   async updateProfile() {
     let admin = { id: this.admin.id, ...this._getProfileForm() };
-    const update$ = await this.adminProvider.updateAdmin(admin);
-    update$.subscribe(
-      result => {
-        if (result && result.success) {
-          this.admin = result.admin;
-        } else if (result && !result.success) {
-          console.log(result.message);
-        }
-      },
-      error => {
-        console.log(error.error);
-      }
-    );
+    await this._updateAdmin(admin);
   }
 
   _initProfileForm() {
@@ -91,5 +79,21 @@ export class ProfilePage implements OnInit {
         }
       );
     });
+  }
+
+  async _updateAdmin(admin) {
+    const update$ = await this.adminProvider.updateAdmin(admin);
+    update$.subscribe(
+      result => {
+        if (result && result.success) {
+          this.admin = result.admin;
+        } else if (result && !result.success) {
+          console.log(result.message);
+        }
+      },
+      error => {
+        console.log(error.error);
+      }
+    );
   }
 }
