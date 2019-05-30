@@ -20,7 +20,11 @@ export class EmployeeListPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.getEmployees();
+    try {
+      await this.getEmployees();
+    } catch (ex) {
+      console.log(ex.message);
+    }
   }
 
   async getEmployees() {
