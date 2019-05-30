@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from "../../../../models/employees";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
 import { DairyStorage } from "../../../../storage/dairy";
+import { EmployeeListPage } from "../employees-list/employee-list";
 
 @Component({
   selector: "new-employee",
@@ -62,7 +63,7 @@ export class NewEmployeePage {
             resolve(result.message);
           }
         },
-        error => reject(error.error.message)
+        error => reject(error.error)
       );
     });
   }
@@ -72,9 +73,10 @@ export class NewEmployeePage {
     const employee = { DairyId: dairy.id, ...this._getEmployeeForm() };
     try {
       const addMessage = await this._addEmployee(employee);
-      this.showToast(addMessage)
+      this.showToast(addMessage);
+      this.navCtrl.push(EmployeeListPage);
     } catch (ex) {
-      this.showToast(ex.message)
+      this.showToast(ex);
     }
   }
 
