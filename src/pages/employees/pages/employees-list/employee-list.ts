@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { EmployeeProfilePage } from "../employee-profile/employee-profile";
 import { NewEmployeePage } from "../new-employee/new-employee";
@@ -8,7 +8,7 @@ import { EmployeesProvider } from "../../../../providers/employees/employees";
   selector: "employee-list",
   templateUrl: "employee-list.html"
 })
-export class EmployeeListPage {
+export class EmployeeListPage implements OnInit {
   employees = [
     {
       firstName: "اصغر",
@@ -54,6 +54,8 @@ export class EmployeeListPage {
 
   constructor(private navCtrl: NavController, private employeesProvider: EmployeesProvider) {}
 
+  async ngOnInit() {}
+  
   navToEmployeeProfile(employee) {
     this.navCtrl.push(EmployeeProfilePage, { employee });
   }
