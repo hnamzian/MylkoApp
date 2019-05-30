@@ -74,9 +74,7 @@ export class DairyProfilePage implements OnInit {
 
   async _updateDairy(dairy: Dairy) {
     let update$;
-    if (dairy.id) update$ = await this.dairyProvider.updateDairy(dairy);
-    else update$ = await this.dairyProvider.addDairy(dairy);
-    update$.subscribe(console.log);
+    update$ = await this.dairyProvider.updateDairy(dairy);
   }
 
   showToast(message) {
