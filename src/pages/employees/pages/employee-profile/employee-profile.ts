@@ -25,7 +25,15 @@ export class EmployeeProfilePage implements OnInit {
     this._setEmployeeForm(this.employee);
   }
 
-  updateProfile() {}
+  async updateProfile() {
+    const employee = {
+      id: this.employee.id,
+      DairyId: this.employee.DairyId,
+      ...this._getEmployeeForm()
+    };
+    const update$ = await this.employeesProvider.updateEmployee(employee);
+    update$.subscribe(console.log);
+  }
 
   _setEmployeeForm(employee: Employee) {
     this.employeeForm = this.formBuilder.group({
