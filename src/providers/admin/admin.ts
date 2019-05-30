@@ -12,4 +12,17 @@ export class AdminProvider {
   baseUrl = `${env.BASE_URL}/admin`;
 
   constructor(public http: HttpClient, public tokenStorage: TokenStorage) {}
+
+  async getAdmin(): Promise<Observable<UserAPI>> {
+    let url = `${this.baseUrl}/`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    if (!token) return Observable.of({} as UserAPI);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token })
+    };
+
+    return this.http.get(url, httpOptions).pipe(map((result: UserAPI) => result));
+  }
 }
