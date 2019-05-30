@@ -39,6 +39,13 @@ export class DairyProfilePage implements OnInit {
     });
   }
 
+  _setProfileForm(dairy) {
+    this.dairyProfileForm.setValue({
+      dairyName: dairy.firstName,
+      address: dairy.address
+    });
+  }
+
   _getDairyProfileForm() {
     return {
       name: this.dairyProfileForm.get("dairyName").value || "",
