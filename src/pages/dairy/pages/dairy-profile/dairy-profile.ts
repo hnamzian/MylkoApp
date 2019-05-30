@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { DairyProvider } from "../../../../providers/dairy/dairy";
 
 @Component({
   selector: "dairy-profile",
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class DairyProfilePage implements OnInit {
   dairyProfileForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private dairyProvider: DairyProvider) {}
 
   ngOnInit() {
     this._initDairyProfileForm();
@@ -20,5 +21,10 @@ export class DairyProfilePage implements OnInit {
       address: ["", Validators.required],
       dairyMan: ["", Validators.required]
     });
+  }
+
+  async _getDairy() {
+    const dairies$ = await this.dairyProvider.getDairies();
+    dairies$.subscribe(console.log);
   }
 }
