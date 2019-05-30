@@ -25,7 +25,7 @@ export class EmployeeProfilePage implements OnInit {
     this._setEmployeeForm(this.employee);
   }
 
-  async updateProfile() {
+  async updateEmployee() {
     const employee = {
       id: this.employee.id,
       DairyId: this.employee.DairyId,
