@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "dairy-profile",
@@ -8,4 +8,13 @@ import { FormGroup } from "@angular/forms";
 export class DairyProfilePage {
   dairyProfileForm: FormGroup;
 
+  constructor(private formBuilder: FormBuilder) {}
+
+  _initDairyProfileForm() {
+    this.dairyProfileForm = this.formBuilder.group({
+      name: ["", Validators.required],
+      address: ["", Validators.required],
+      dairyMan: ["", Validators.required]
+    });
+  }
 }
