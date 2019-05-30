@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Toast, ToastController } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from "../../../../models/employees";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
@@ -12,10 +12,13 @@ export class EmployeeProfilePage implements OnInit {
   employeeForm: FormGroup;
   employee: Employee;
 
+  toast: Toast;
+
   constructor(
     navParams: NavParams,
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
+    private toastCtrl: ToastController,
     private employeesProvider: EmployeesProvider
   ) {
     this.employee = navParams.get("employee");
@@ -76,5 +79,15 @@ export class EmployeeProfilePage implements OnInit {
         error => reject(error.error.message)
       );
     });
+  }
+
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
   }
 }
