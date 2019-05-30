@@ -24,7 +24,10 @@ export class ProfilePage implements OnInit {
 
   async ngOnInit() {
     this._initProfileForm();
-    await this._getAdmin();
+    
+    const getMessage = await this._getAdmin();
+    this.showToast(getMessage);
+    
     this._setProfileForm(this.admin);
   }
 
