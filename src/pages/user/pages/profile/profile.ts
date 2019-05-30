@@ -24,10 +24,10 @@ export class ProfilePage implements OnInit {
 
   async ngOnInit() {
     this._initProfileForm();
-    
+
     const getMessage = await this._getAdmin();
     this.showToast(getMessage);
-    
+
     this._setProfileForm(this.admin);
   }
 
@@ -74,7 +74,7 @@ export class ProfilePage implements OnInit {
         result => {
           if (result && result.success) {
             this.admin = result.admin;
-            resolve(this.admin);
+            resolve(result.message);
           } else if (result && !result.success) {
             resolve(result.message);
           }
