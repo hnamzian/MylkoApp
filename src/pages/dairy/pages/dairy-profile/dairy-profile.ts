@@ -28,6 +28,15 @@ export class DairyProfilePage implements OnInit {
 
   async _getDairy() {
     const dairies$ = await this.dairyProvider.getDairies();
-    dairies$.subscribe(console.log);
+    dairies$.subscribe(
+      result => {
+        if (result && result.success) {
+          this.dairy = result.dairies[0];
+        }
+      },
+      error => {
+        console.log(error.error.message);
+      }
+    );
   }
 }
