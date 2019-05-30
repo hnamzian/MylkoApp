@@ -25,16 +25,17 @@ export class ProfilePage implements OnInit {
     this._setProfileForm(this.admin);
   }
 
-  updateProfile() {
+  async updateProfile() {
     let admin = {
       id: this.admin.id,
-      firstName: this.profileForm.get("firstName").value,
-      lastName: this.profileForm.get("lastName").value,
-      mobile: this.profileForm.get("mobile").value,
-      email: this.profileForm.get("email").value,
-      address: this.profileForm.get("address").value
-    };
-    console.log(admin);
+      firstName: this.profileForm.get("firstName").value || "",
+      lastName: this.profileForm.get("lastName").value || "",
+      mobile: this.profileForm.get("mobile").value || "",
+      email: this.profileForm.get("email").value || "",
+      address: this.profileForm.get("address").value || ""
+    } as ADMIN;
+    const update$ = await this.adminProvider.updateAdmin(admin);
+    update$.subscribe(console.log);
   }
 
   _initProfileForm() {
