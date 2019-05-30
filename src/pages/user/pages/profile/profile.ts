@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, ToastController, Toast } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AdminProvider } from "../../../../providers/admin/admin";
 import { ADMIN } from "../../../../models/admin";
@@ -12,9 +12,12 @@ export class ProfilePage implements OnInit {
   profileForm: FormGroup;
   admin: ADMIN;
 
+  toast: Toast;
+
   constructor(
     navParams: NavParams,
     public navCtrl: NavController,
+    public toastCtrl: ToastController,
     public formBuilder: FormBuilder,
     public adminProvider: AdminProvider
   ) {}
@@ -95,5 +98,15 @@ export class ProfilePage implements OnInit {
         console.log(error.error);
       }
     );
+  }
+  
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
   }
 }
