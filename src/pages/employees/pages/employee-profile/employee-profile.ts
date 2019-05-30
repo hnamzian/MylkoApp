@@ -31,8 +31,12 @@ export class EmployeeProfilePage implements OnInit {
       DairyId: this.employee.DairyId,
       ...this._getEmployeeForm()
     };
-    const update$ = await this.employeesProvider.updateEmployee(employee);
-    update$.subscribe(console.log);
+
+    try {
+      await this._updateEmployee(employee);
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   _setEmployeeForm(employee: Employee) {
@@ -69,9 +73,7 @@ export class EmployeeProfilePage implements OnInit {
             reject(result.message);
           }
         },
-        error => {
-          reject(error.error);
-        }
+        error => reject(error.error.message)
       );
     });
   }
