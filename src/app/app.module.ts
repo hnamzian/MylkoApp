@@ -15,14 +15,39 @@ import { GoatsModule } from "../pages/goats/goats.module";
 import { UserModule } from "../pages/user/user.module";
 import { CoreModule } from "../pages/core/core.module";
 import { AuthProvider } from "../providers/auth/auth";
+import { AdminProvider } from "../providers/admin/admin";
+import { DairyProvider } from "../providers/dairy/dairy";
+import { EmployeesProvider } from "../providers/employees/employees";
 import { TokenStorage } from "../storage/token";
 import { UserStorage } from "../storage/user";
 
 @NgModule({
   declarations: [MyApp, HomePage],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule, IonicStorageModule.forRoot(), AuthModule, DairyModule, DevicesModule, EmployeesModule, GoatsModule, UserModule, CoreModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    AuthModule,
+    DairyModule,
+    DevicesModule,
+    EmployeesModule,
+    GoatsModule,
+    UserModule,
+    CoreModule
+  ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
-  providers: [StatusBar, SplashScreen, { provide: ErrorHandler, useClass: IonicErrorHandler }, AuthProvider, TokenStorage, UserStorage]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthProvider,
+    AdminProvider,
+    DairyProvider,
+    EmployeesProvider,
+    TokenStorage,
+    UserStorage
+  ]
 })
 export class AppModule {}
