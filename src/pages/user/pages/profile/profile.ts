@@ -109,4 +109,8 @@ export class ProfilePage implements OnInit {
     });
     this.toast.present();
   }
+
+  hideToast() {
+    this.toast.dismiss();
+  }
 }
