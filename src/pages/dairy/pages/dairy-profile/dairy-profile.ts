@@ -89,6 +89,23 @@ export class DairyProfilePage implements OnInit {
     });
   }
 
+  async _addDairy(dairy: Dairy) {
+    let add$ = await this.dairyProvider.addDairy(dairy);
+    return new Promise(resolve => {
+      add$.subscribe(
+        result => {
+          if (result && result.success) {
+            this.dairy = result.dairies[0];
+            resolve(result.message);
+          }
+        },
+        error => {
+          resolve(error.error.message);
+        }
+      );
+    });
+  }
+
   showToast(message) {
     this.toast = this.toastCtrl.create({
       message: message,
