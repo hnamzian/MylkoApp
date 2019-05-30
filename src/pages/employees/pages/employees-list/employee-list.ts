@@ -61,6 +61,11 @@ export class EmployeeListPage implements OnInit {
 
   async ngOnInit() {}
 
+  async getEmployees() {
+    const dairy = await this._getDairy();
+    await this._getEmployees(dairy.id);
+  }
+
   navToEmployeeProfile(employee) {
     this.navCtrl.push(EmployeeProfilePage, { employee });
   }
@@ -74,9 +79,8 @@ export class EmployeeListPage implements OnInit {
     return dairy;
   }
 
-  async _getEmployees(dairyId) {    
+  async _getEmployees(dairyId) {
     const employees$ = await this.employeesProvider.getEmployees(dairyId);
     employees$.subscribe(console.log);
   }
-
 }
