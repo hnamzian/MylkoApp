@@ -65,7 +65,19 @@ export class EmployeeListPage implements OnInit {
 
   async getEmployees() {
     const dairy = await this._getDairy();
-    await this._getEmployees(dairy.id);
+    const employees$ = await this._getEmployees$(dairy.id);
+    return new Promise(resolve => {
+      employees$.subscribe(
+        result => {
+          if (result && result.success) {
+            resolve(result.message);
+          }
+        },
+        error => {
+          resolve(error.error.message);
+        }
+      );
+    });
   }
 
   navToEmployeeProfile(employee) {
