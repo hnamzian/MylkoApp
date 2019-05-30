@@ -42,5 +42,7 @@ export class NewEmployeePage {
     } as Employee;
   }
 
-  addEmployee() {}
+  addEmployee() {
+    const employee = this._getEmployeeForm();
+  }
 }
