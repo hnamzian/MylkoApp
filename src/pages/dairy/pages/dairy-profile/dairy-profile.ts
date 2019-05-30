@@ -41,7 +41,7 @@ export class DairyProfilePage implements OnInit {
 
   _setProfileForm(dairy) {
     this.dairyProfileForm.setValue({
-      dairyName: dairy.firstName,
+      dairyName: dairy.name,
       address: dairy.address
     });
   }
