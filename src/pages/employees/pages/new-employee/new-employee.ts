@@ -67,8 +67,8 @@ export class NewEmployeePage {
   async addEmployee() {
     const dairy = await this._getDairy();
     const employee = { DairyId: dairy.id, ...this._getEmployeeForm() };
-
-    const employees$ = await this.employeesProvider.addEmployee(employee);
-    employees$.subscribe(console.log);
+    try {
+      const addMessage = await this._addEmployee(employee);
+    } catch (ex) {}
   }
 }
