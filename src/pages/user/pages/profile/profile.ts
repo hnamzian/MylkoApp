@@ -33,6 +33,16 @@ export class ProfilePage implements OnInit {
 
   updateProfile() {}
 
+  _setProfileForm(admin) {
+    this.profileForm.setValue({
+      firstName: admin.firstName,
+      lastName: admin.lastName,
+      mobile: admin.mobile,
+      email: admin.email,
+      address: admin.address
+    });
+  }
+
   async _getAdmin() {
     const admin$ = await this.adminProvider.getAdmin();
     return new Promise((resolve, reject) => {
