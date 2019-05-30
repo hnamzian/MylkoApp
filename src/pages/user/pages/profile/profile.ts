@@ -29,6 +29,8 @@ export class ProfilePage implements OnInit {
     });
 
     await this._getAdmin();
+
+    this._setProfileForm(this.admin);
   }
 
   updateProfile() {}
