@@ -14,7 +14,7 @@ export interface Employee {
   lastName: string;
   mobile: string;
   email: string;
-  address: string;
+  hiringDate: string;
   position: string;
   DairyId: number;
   AdminId: number;
