@@ -11,8 +11,9 @@ export class DairyProfilePage implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private dairyProvider: DairyProvider) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this._initDairyProfileForm();
+    await this._getDairy();
   }
 
   _initDairyProfileForm() {
