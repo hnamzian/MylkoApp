@@ -22,7 +22,9 @@ export class DairyProfilePage implements OnInit {
 
   async ngOnInit() {
     this._initDairyProfileForm();
-    await this._getDairy();
+
+    const message = await this._getDairy();
+    this.showToast(message);
   }
 
   _initDairyProfileForm() {
