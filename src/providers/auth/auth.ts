@@ -5,7 +5,6 @@ import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
 import { SMSRQ, SMSRSP } from "../../models/sms";
 import { TokenStorage } from "../../storage/token";
-import { API } from "../../models/api";
 import { AuthRSP } from "../../models/auth";
 import { AdminAPI } from "../../models/admin";
 
