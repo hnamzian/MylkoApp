@@ -74,4 +74,9 @@ export class EmployeeListPage implements OnInit {
     return dairy;
   }
 
+  async _getEmployees(dairyId) {    
+    const employees$ = await this.employeesProvider.getEmployees(dairyId);
+    employees$.subscribe(console.log);
+  }
+
 }
