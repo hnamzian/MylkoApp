@@ -31,6 +31,7 @@ export class ProfilePage implements OnInit {
   async updateProfile() {
     let admin = { id: this.admin.id, ...this._getProfileForm() };
     const updateMessage = await this._updateAdmin(admin);
+    this.showToast(updateMessage);
   }
 
   _initProfileForm() {
