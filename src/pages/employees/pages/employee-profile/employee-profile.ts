@@ -13,18 +13,20 @@ export class EmployeeProfilePage implements OnInit {
 
   constructor(
     navParams: NavParams,
-    public navCtrl: NavController,
-    public formBuilder: FormBuilder
+    private navCtrl: NavController,
+    private formBuilder: FormBuilder,
+
   ) {
     this.employee = navParams.get("employee");
-    // console.log(this.employee);
   }
 
   ngOnInit() {
     this._setEmployeeForm(this.employee);
   }
 
-  updateProfile() {}
+  updateProfile() {
+
+  }
 
   _setEmployeeForm(employee: Employee) {
     this.employeeForm = this.formBuilder.group({
