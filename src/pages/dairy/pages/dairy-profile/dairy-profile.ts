@@ -30,7 +30,7 @@ export class DairyProfilePage implements OnInit {
   }
 
   async updateDairy() {
-    const dairy = this._getDairyProfileForm();
+    const dairy = { id: this.dairy.id, ...this._getDairyProfileForm() };
     await this._updateDairy(dairy);
   }
 
