@@ -35,6 +35,13 @@ export class DairyProfilePage implements OnInit {
     });
   }
 
+  _getDairyProfileForm() {
+    return {
+      name: this.dairyProfileForm.get("dairyName").value || "",
+      address: this.dairyProfileForm.get("address").value || ""
+    } as Dairy;
+  }
+
   async _getDairy() {
     const dairies$ = await this.dairyProvider.getDairies();
     return new Promise(resolve => {
