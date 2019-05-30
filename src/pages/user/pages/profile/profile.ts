@@ -35,7 +35,18 @@ export class ProfilePage implements OnInit {
       address: this.profileForm.get("address").value || ""
     } as ADMIN;
     const update$ = await this.adminProvider.updateAdmin(admin);
-    update$.subscribe(console.log);
+    update$.subscribe(
+      result => {
+        if (result && result.success) {
+          this.admin = result.admin;
+        } else if (result && !result.success) {
+          console.log(result.message);
+        }
+      },
+      error => {
+        console.log(error.error);
+      }
+    );
   }
 
   _initProfileForm() {
