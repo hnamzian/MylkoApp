@@ -53,17 +53,17 @@ export class DairyProvider {
     return this.http.put(url, dairy, httpOptions).pipe(map((result: DairyResponse) => result));
   }
 
-  async addDairy(dairy: Dairy): Promise<Observable<DairyResponse>> {
+  async addDairy(dairy: Dairy): Promise<Observable<DairiesResponse>> {
     let url = `${this.baseUrl}/add`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
-    if (!token) return Observable.of({} as DairyResponse);
+    if (!token) return Observable.of({} as DairiesResponse);
 
     const httpOptions = {
       headers: new HttpHeaders({ Authorization: token })
     };
 
-    return this.http.post(url, dairy, httpOptions).pipe(map((result: DairyResponse) => result));
+    return this.http.post(url, dairy, httpOptions).pipe(map((result: DairiesResponse) => result));
   }
 
   async removeDairy(dairyId): Promise<Observable<API>> {
