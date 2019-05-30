@@ -68,8 +68,8 @@ export class CheckVerificationCodePage {
       async result => {
         if (result && result.success) {
           await this.tokenStorage.setAuthToken(result.token);
-          await this.userStorage.setUser(result.user);
-          this.navCtrl.push(HomePage, { user: result.user });
+          await this.userStorage.setUser(result.admin);
+          this.navCtrl.push(HomePage, { user: result.admin });
         } else if (result && !result.success) {
           this.showToast(result.message);
         }
