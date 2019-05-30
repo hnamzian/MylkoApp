@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from "../../../../models/employees";
+import { EmployeesProvider } from "../../../../providers/employees/employees";
 
 @Component({
   selector: "employee-profile",
@@ -15,7 +16,7 @@ export class EmployeeProfilePage implements OnInit {
     navParams: NavParams,
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
-
+    private employeesProvider: EmployeesProvider
   ) {
     this.employee = navParams.get("employee");
   }
@@ -24,9 +25,7 @@ export class EmployeeProfilePage implements OnInit {
     this._setEmployeeForm(this.employee);
   }
 
-  updateProfile() {
-
-  }
+  updateProfile() {}
 
   _setEmployeeForm(employee: Employee) {
     this.employeeForm = this.formBuilder.group({
