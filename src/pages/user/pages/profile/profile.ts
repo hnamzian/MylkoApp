@@ -16,10 +16,10 @@ export class ProfilePage implements OnInit {
 
   constructor(
     navParams: NavParams,
-    public navCtrl: NavController,
-    public toastCtrl: ToastController,
-    public formBuilder: FormBuilder,
-    public adminProvider: AdminProvider
+    private navCtrl: NavController,
+    private toastCtrl: ToastController,
+    private formBuilder: FormBuilder,
+    private adminProvider: AdminProvider
   ) {}
 
   async ngOnInit() {
@@ -73,13 +73,11 @@ export class ProfilePage implements OnInit {
             this.admin = result.admin;
             resolve(this.admin);
           } else if (result && !result.success) {
-            console.log(result.message);
-            reject(result.message);
+            resolve(result.message);
           }
         },
         error => {
-          console.log(error);
-          reject(error);
+          resolve(error);
         }
       );
     });
