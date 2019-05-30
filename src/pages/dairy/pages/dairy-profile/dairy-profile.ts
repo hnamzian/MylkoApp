@@ -30,7 +30,7 @@ export class DairyProfilePage implements OnInit {
   _initDairyProfileForm() {
     this.dairyProfileForm = this.formBuilder.group({
       dairyName: ["", Validators.required],
-      address: ["", Validators.required],
+      address: ["", Validators.required]
     });
   }
 
@@ -56,6 +56,11 @@ export class DairyProfilePage implements OnInit {
         }
       );
     });
+  }
+
+  async _updateDairy(dairy: Dairy) {
+    const update$ = await this.dairyProvider.updateDairy(dairy);
+    update$.subscribe(console.log);
   }
 
   showToast(message) {
