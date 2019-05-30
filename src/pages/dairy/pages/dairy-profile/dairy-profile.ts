@@ -73,8 +73,20 @@ export class DairyProfilePage implements OnInit {
   }
 
   async _updateDairy(dairy: Dairy) {
-    let update$;
-    update$ = await this.dairyProvider.updateDairy(dairy);
+    let update$ = await this.dairyProvider.updateDairy(dairy);
+    return new Promise(resolve => {
+      update$.subscribe(
+        result => {
+          if (result && result.success) {
+            this.dairy = result.dairy;
+            resolve(result.message);
+          }
+        },
+        error => {
+          resolve(error.error.message);
+        }
+      );
+    });
   }
 
   showToast(message) {
