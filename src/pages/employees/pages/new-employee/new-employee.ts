@@ -72,7 +72,10 @@ export class NewEmployeePage {
     const employee = { DairyId: dairy.id, ...this._getEmployeeForm() };
     try {
       const addMessage = await this._addEmployee(employee);
-    } catch (ex) {}
+      this.showToast(addMessage)
+    } catch (ex) {
+      this.showToast(ex.message)
+    }
   }
 
   showToast(message) {
