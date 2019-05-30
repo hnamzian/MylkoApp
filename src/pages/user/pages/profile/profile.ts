@@ -25,7 +25,8 @@ export class ProfilePage implements OnInit {
     public adminProvider: AdminProvider
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this._getAdmin();
     this.profileForm = this.formBuilder.group({
       firstName: [this.user.firstName, Validators.required],
       lastName: [this.user.lastName, Validators.required],
@@ -37,4 +38,9 @@ export class ProfilePage implements OnInit {
   }
 
   updateProfile() {}
+
+  async _getAdmin() {
+    const admin$ = await this.adminProvider.getAdmin();
+    admin$.subscribe(console.log);
+  }
 }
