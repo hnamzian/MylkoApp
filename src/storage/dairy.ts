@@ -12,7 +12,7 @@ export class DairyStorage {
     return result;
   }
 
-  async getDairy() {
+  async getDairy(): Promise<Dairy> {
     await this.storage.ready();
     const result = await this.storage.get("Dairy");
     return result;
