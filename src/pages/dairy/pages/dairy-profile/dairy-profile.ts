@@ -40,6 +40,8 @@ export class DairyProfilePage implements OnInit {
     if (dairy.id) updateMessage = await this._updateDairy(dairy);
     else updateMessage = await this._addDairy(dairy);
 
+    await this.dairyStorage.setDairy(this.dairy);
+
     this.showToast(updateMessage);
   }
 
