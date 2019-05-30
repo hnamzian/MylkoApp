@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DairyProvider } from "../../../../providers/dairy/dairy";
+import { Dairy } from "../../../../models/dairy";
 
 @Component({
   selector: "dairy-profile",
@@ -8,6 +9,7 @@ import { DairyProvider } from "../../../../providers/dairy/dairy";
 })
 export class DairyProfilePage implements OnInit {
   dairyProfileForm: FormGroup;
+  dairy: Dairy;
 
   constructor(private formBuilder: FormBuilder, private dairyProvider: DairyProvider) {}
 
