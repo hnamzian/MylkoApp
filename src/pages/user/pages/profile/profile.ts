@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AdminProvider } from "../../../../providers/admin/admin";
 
 @Component({
   selector: "profile-page",
@@ -17,7 +18,12 @@ export class ProfilePage implements OnInit {
     address: "بانش"
   };
 
-  constructor(navParams: NavParams, public navCtrl: NavController, public formBuilder: FormBuilder) {}
+  constructor(
+    navParams: NavParams,
+    public navCtrl: NavController,
+    public formBuilder: FormBuilder,
+    public adminProvider: AdminProvider
+  ) {}
 
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
