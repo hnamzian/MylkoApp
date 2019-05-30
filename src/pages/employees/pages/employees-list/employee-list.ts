@@ -26,7 +26,7 @@ export class EmployeeListPage implements OnInit {
     try {
       await this.getEmployees();
     } catch (ex) {
-      console.log(ex.message);
+      this.showToast(ex.message);
     }
   }
 
