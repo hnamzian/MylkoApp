@@ -59,7 +59,9 @@ export class EmployeeListPage implements OnInit {
     private dairyStorage: DairyStorage
   ) {}
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    await this.getEmployees();
+  }
 
   async getEmployees() {
     const dairy = await this._getDairy();
@@ -79,8 +81,8 @@ export class EmployeeListPage implements OnInit {
     return dairy;
   }
 
-  async _getEmployees(dairyId) {
+  async _getEmployees$(dairyId) {
     const employees$ = await this.employeesProvider.getEmployees(dairyId);
-    employees$.subscribe(console.log);
+    return employees$;
   }
 }
