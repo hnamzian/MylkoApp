@@ -12,7 +12,6 @@ export class ProfilePage implements OnInit {
   user = {
     firstName: "جعفر",
     lastName: "بانشی",
-    dairyName: "دامداری دام انشان",
     mobile: "09306103749",
     email: "",
     address: "بانش"
@@ -29,7 +28,6 @@ export class ProfilePage implements OnInit {
     this.profileForm = this.formBuilder.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
-      dairyName: ["", Validators.required],
       mobile: ["", Validators.required],
       email: [""],
       address: ["", Validators.required]
