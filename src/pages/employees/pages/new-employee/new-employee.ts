@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Employee } from "../../../../models/employees";
 
 @Component({
   selector: "new-employee",
@@ -27,6 +28,16 @@ export class NewEmployeePage {
       email: [""],
       hiringDate: ["", Validators.required]
     });
+  }
+
+  _getEmployeeForm() {
+    return {
+      firstName: this.employeeForm.get("firstName").value || "",
+      lastName: this.employeeForm.get("lastName").value || "",
+      mobile: this.employeeForm.get("mobile").value || "",
+      email: this.employeeForm.get("email").value || "",
+      hiringDate: this.employeeForm.get("hiringDate").value || ""
+    } as Employee;
   }
 
   addEmployee() {}
