@@ -5,7 +5,7 @@ import { map, catchError } from "rxjs/operators";
 import { environment as env } from "../../config/environment.dev";
 import { TokenStorage } from "../../storage/token";
 import { API } from "../../models/api";
-import { AdminAPI } from "../../models/admin";
+import { AdminAPI, ADMIN } from "../../models/admin";
 
 @Injectable()
 export class AdminProvider {
@@ -24,5 +24,18 @@ export class AdminProvider {
     };
 
     return this.http.get(url, httpOptions).pipe(map((result: AdminAPI) => result));
+  }
+
+  async updateAdmin(admin: ADMIN) {
+    let url = `${this.baseUrl}/update`;
+
+    const token = (await this.tokenStorage.getAuthToken()) || false;
+    if (!token) return Observable.of({} as AdminAPI);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token })
+    };
+
+    return this.http.put(url, admin, httpOptions).pipe(map((result: AdminAPI) => result));
   }
 }
