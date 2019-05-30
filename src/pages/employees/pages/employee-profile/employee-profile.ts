@@ -10,7 +10,11 @@ export class EmployeeProfilePage implements OnInit {
   employeeForm: FormGroup;
   employee;
 
-  constructor(navParams: NavParams, public navCtrl: NavController, public formBuilder: FormBuilder) {
+  constructor(
+    navParams: NavParams,
+    public navCtrl: NavController,
+    public formBuilder: FormBuilder
+  ) {
     this.employee = navParams.get("employee");
     // console.log(this.employee);
   }
