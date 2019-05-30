@@ -15,7 +15,8 @@ export class NewEmployeePage {
   constructor(
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
-    private dairyStorage: DairyStorage
+    private dairyStorage: DairyStorage,
+    private employeesProvider: EmployeesProvider
   ) {}
 
   ngOnInit() {
@@ -49,7 +50,25 @@ export class NewEmployeePage {
     return dairy;
   }
 
-  addEmployee() {
-    const employee = this._getEmployeeForm();
+  async _addEmployee(employee) {
+    const employees$ = await this.employeesProvider.addEmployee(employee);
+    return new Promise((resolve, reject) => {
+      employees$.subscribe(
+        result => {
+          if (result && result.success) {
+            resolve(result.message);
+          }
+        },
+        error => reject(error.error.message)
+      );
+    });
+  }
+
+  async addEmployee() {
+    const dairy = await this._getDairy();
+    const employee = { DairyId: dairy.id, ...this._getEmployeeForm() };
+
+    const employees$ = await this.employeesProvider.addEmployee(employee);
+    employees$.subscribe(console.log);
   }
 }
