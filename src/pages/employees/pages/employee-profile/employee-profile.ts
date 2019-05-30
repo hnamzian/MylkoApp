@@ -36,4 +36,14 @@ export class EmployeeProfilePage implements OnInit {
       hiringDate: [employee.hiringDate, Validators.required]
     });
   }
+
+  _getEmployeeForm() {
+    return {
+      firstName: this.employeeForm.get("firstName").value,
+      lastName: this.employeeForm.get("lastName").value,
+      mobile: this.employeeForm.get("mobile").value,
+      email: this.employeeForm.get("email").value,
+      hiringDate: this.employeeForm.get("hiringDate").value
+    } as Employee;
+  }
 }
