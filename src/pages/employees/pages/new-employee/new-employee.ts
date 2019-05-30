@@ -9,9 +9,17 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class NewEmployeePage {
   employeeForm: FormGroup;
 
-  constructor(navParams: NavParams, public navCtrl: NavController, public formBuilder: FormBuilder) {}
+  constructor(
+    navParams: NavParams,
+    public navCtrl: NavController,
+    public formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
+    this._initEmployeeForm();
+  }
+
+  _initEmployeeForm() {
     this.employeeForm = this.formBuilder.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
