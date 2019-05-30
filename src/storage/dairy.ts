@@ -11,4 +11,10 @@ export class DairyStorage {
     const result = await this.storage.set("Dairy", dairy);
     return result;
   }
+
+  async getDairy() {
+    await this.storage.ready();
+    const result = await this.storage.get("Dairy");
+    return result;
+  }
 }
