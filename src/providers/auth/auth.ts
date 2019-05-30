@@ -7,7 +7,7 @@ import { SMSRQ, SMSRSP } from "../../models/sms";
 import { TokenStorage } from "../../storage/token";
 import { API } from "../../models/api";
 import { AuthRSP } from "../../models/auth";
-import { UserAPI } from "../../models/user";
+import { AdminAPI } from "../../models/admin";
 
 @Injectable()
 export class AuthProvider {
@@ -41,7 +41,7 @@ export class AuthProvider {
     let url = `${this.baseUrl}/login`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
-    if (!token) return Observable.of({} as UserAPI);
+    if (!token) return Observable.of({} as AdminAPI);
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -49,6 +49,6 @@ export class AuthProvider {
       })
     };
 
-    return this.http.get(url, httpOptions).pipe(map((result: UserAPI) => result));
+    return this.http.get(url, httpOptions).pipe(map((result: AdminAPI) => result));
   }
 }
