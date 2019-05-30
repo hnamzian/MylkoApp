@@ -56,4 +56,23 @@ export class EmployeeProfilePage implements OnInit {
       hiringDate: this.employeeForm.get("hiringDate").value
     } as Employee;
   }
+
+  async _updateEmployee(employee) {
+    const update$ = await this.employeesProvider.updateEmployee(employee);
+    return new Promise((resolve, reject) => {
+      update$.subscribe(
+        result => {
+          if (result && result.success) {
+            this.employee = result.employee;
+            resolve(result.message);
+          } else {
+            reject(result.message);
+          }
+        },
+        error => {
+          reject(error.error);
+        }
+      );
+    });
+  }
 }
