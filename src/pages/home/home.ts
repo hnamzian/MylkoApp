@@ -5,6 +5,7 @@ import { DeviceTypesPage } from "../devices/pages/device-types/device-types";
 import { EmployeeListPage } from "../employees/pages/employees-list/employee-list";
 import { GoatsListPage } from "../goats/pages/goats-list/goats-list";
 import { ProfilePage } from "../user/pages/profile/profile";
+import { DairyProfilePage } from "../dairy/pages/dairy-profile/dairy-profile";
 
 @Component({
   selector: "page-home",
@@ -33,5 +34,7 @@ export class HomePage {
     this.navCtrl.push(ProfilePage);
   }
 
-  navToDairyProfilePage() {}
+  navToDairyProfilePage() {
+    this.navCtrl.push(DairyProfilePage);
+  }
 }
