@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DairyProvider } from "../../../../providers/dairy/dairy";
 import { Dairy } from "../../../../models/dairy";
+import { Toast, ToastController } from "ionic-angular";
 
 @Component({
   selector: "dairy-profile",
@@ -11,7 +12,13 @@ export class DairyProfilePage implements OnInit {
   dairyProfileForm: FormGroup;
   dairy: Dairy;
 
-  constructor(private formBuilder: FormBuilder, private dairyProvider: DairyProvider) {}
+  toast: Toast;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private toastCtrl: ToastController,
+    private dairyProvider: DairyProvider
+  ) {}
 
   async ngOnInit() {
     this._initDairyProfileForm();
@@ -41,5 +48,19 @@ export class DairyProfilePage implements OnInit {
         }
       );
     });
+  }
+
+  showToast(message) {
+    this.toast = this.toastCtrl.create({
+      message: message,
+      position: "bottom",
+      duration: 2000,
+      cssClass: "toast"
+    });
+    this.toast.present();
+  }
+
+  hideToast() {
+    this.toast.dismiss();
   }
 }
