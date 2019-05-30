@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AdminProvider } from "../../../../providers/admin/admin";
+import { ADMIN } from "../../../../models/admin";
 
 @Component({
   selector: "profile-page",
@@ -9,13 +10,7 @@ import { AdminProvider } from "../../../../providers/admin/admin";
 })
 export class ProfilePage implements OnInit {
   profileForm: FormGroup;
-  user = {
-    firstName: "جعفر",
-    lastName: "بانشی",
-    mobile: "09306103749",
-    email: "",
-    address: "بانش"
-  };
+  admin: ADMIN;
 
   constructor(
     navParams: NavParams,
