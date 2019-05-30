@@ -15,8 +15,6 @@ export class ProfilePage implements OnInit {
   toast: Toast;
 
   constructor(
-    navParams: NavParams,
-    private navCtrl: NavController,
     private toastCtrl: ToastController,
     private formBuilder: FormBuilder,
     private adminProvider: AdminProvider
