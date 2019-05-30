@@ -24,6 +24,7 @@ export class NewEmployeePage {
     this.employeeForm = this.formBuilder.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
+      position: [""],
       mobile: ["", Validators.required],
       email: [""],
       hiringDate: ["", Validators.required]
@@ -34,6 +35,7 @@ export class NewEmployeePage {
     return {
       firstName: this.employeeForm.get("firstName").value || "",
       lastName: this.employeeForm.get("lastName").value || "",
+      position: this.employeeForm.get("position").value || "",
       mobile: this.employeeForm.get("mobile").value || "",
       email: this.employeeForm.get("email").value || "",
       hiringDate: this.employeeForm.get("hiringDate").value || ""
