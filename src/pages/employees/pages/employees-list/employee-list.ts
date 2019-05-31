@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, NavParams, Toast, ToastController } from "ionic-angular";
+import { NavController, NavParams, Toast, ToastController, PopoverController } from "ionic-angular";
 import { EmployeeProfilePage } from "../employee-profile/employee-profile";
 import { NewEmployeePage } from "../new-employee/new-employee";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
@@ -18,6 +18,7 @@ export class EmployeeListPage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
+    private popoverCtrl: PopoverController,
     private employeesProvider: EmployeesProvider,
     private dairyStorage: DairyStorage,
     private toastCtrl: ToastController
@@ -58,7 +59,12 @@ export class EmployeeListPage implements OnInit {
   }
 
   removeEmployee(employee) {
-    this.navCtrl.push(TrashBarCompponent);
+    const trashBarPopover = this.popoverCtrl.create(
+      TrashBarCompponent,
+      {},
+      { cssClass: "trashBarPopover" }
+    );
+    trashBarPopover.present();
   }
 
   async _getDairy() {
