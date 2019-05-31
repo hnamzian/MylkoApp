@@ -83,6 +83,22 @@ export class EmployeeListPage implements OnInit {
     return employees$;
   }
 
+  async _removeEmployee(employee: Employee) {
+    const remove$ = await this.employeesProvider.removeEmployee(employee.id, employee.DairyId);
+    return new Promise((resolve, reject) => {
+      remove$.subscribe(
+        result => {
+          if (result && result.success) {
+            resolve(result.message);
+          } else {
+            reject(result.message);
+          }
+        },
+        error => reject(error.error)
+      );
+    });
+  }
+
   showToast(message) {
     this.toast = this.toastCtrl.create({
       message: message,
