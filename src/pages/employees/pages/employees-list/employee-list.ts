@@ -58,13 +58,19 @@ export class EmployeeListPage implements OnInit {
     this.navCtrl.push(NewEmployeePage);
   }
 
-  removeEmployee(employee) {
+  removeEmployee(employee: Employee) {
     const trashBarPopover = this.popoverCtrl.create(
       TrashBarCompponent,
       {},
       { cssClass: "trashBarPopover" }
     );
     trashBarPopover.present();
+    trashBarPopover.onDidDismiss(async action => {
+      if (action && action.remove) {
+        const remove$ = await this.employeesProvider.removeEmployee(employee.id, employee.DairyId);
+        remove$.subscribe(console.log);
+      }
+    });
   }
 
   async _getDairy() {
