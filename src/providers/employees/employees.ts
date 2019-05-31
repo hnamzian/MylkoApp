@@ -72,7 +72,7 @@ export class EmployeesProvider {
   }
 
   async removeEmployee(employeeId, dairyId): Promise<Observable<API>> {
-    let url = `${this.baseUrl}/remvoe`;
+    let url = `${this.baseUrl}/remove/`;
 
     const token = (await this.tokenStorage.getAuthToken()) || false;
     if (!token) return Observable.of({} as API);
