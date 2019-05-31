@@ -70,6 +70,7 @@ export class EmployeeListPage implements OnInit {
         try {
           const removeMessage = await this._removeEmployee(employee);
           this.showToast(removeMessage);
+          await this.getEmployees();
         } catch (ex) {
           this.showToast(ex.message);
         }
