@@ -69,9 +69,9 @@ export class EmployeeListPage implements OnInit {
       if (action && action.remove) {
         try {
           const removeMessage = await this._removeEmployee(employee);
-          console.log(removeMessage);
+          this.showToast(removeMessage);
         } catch (ex) {
-          console.log(ex.message);
+          this.showToast(ex.message);
         }
       }
     });
