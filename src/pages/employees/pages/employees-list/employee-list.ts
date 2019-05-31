@@ -5,6 +5,7 @@ import { NewEmployeePage } from "../new-employee/new-employee";
 import { EmployeesProvider } from "../../../../providers/employees/employees";
 import { DairyStorage } from "../../../../storage/dairy";
 import { Employee } from "../../../../models/employees";
+import { TrashBarCompponent } from "../../../core/components/trash-bar/trash-bar";
 
 @Component({
   selector: "employee-list",
@@ -54,6 +55,10 @@ export class EmployeeListPage implements OnInit {
 
   navToNewEmployee() {
     this.navCtrl.push(NewEmployeePage);
+  }
+
+  removeEmployee(employee) {
+    this.navCtrl.push(TrashBarCompponent);
   }
 
   async _getDairy() {
