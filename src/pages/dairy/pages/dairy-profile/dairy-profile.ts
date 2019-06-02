@@ -11,7 +11,7 @@ import { DairyStorage } from "../../../../storage/dairy";
 })
 export class DairyProfilePage implements OnInit {
   dairyProfileForm: FormGroup;
-  dairy: Dairy;
+  dairy = {} as Dairy;
 
   toast: Toast;
 
@@ -54,8 +54,8 @@ export class DairyProfilePage implements OnInit {
 
   _setProfileForm(dairy) {
     this.dairyProfileForm.setValue({
-      dairyName: dairy.name,
-      address: dairy.address
+      dairyName: dairy.name || "",
+      address: dairy.address || ""
     });
   }
 
