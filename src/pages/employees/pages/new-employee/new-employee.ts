@@ -11,6 +11,8 @@ import { EmployeeListPage } from "../employees-list/employee-list";
   templateUrl: "new-employee.html"
 })
 export class NewEmployeePage {
+  title = "کارمند جدید";
+
   employeeForm: FormGroup;
 
   toast: Toast;
