@@ -10,6 +10,8 @@ import { EmployeeListPage } from "../employees-list/employee-list";
   templateUrl: "employee-profile.html"
 })
 export class EmployeeProfilePage implements OnInit {
+  title = "پروفایل کارمند";
+  
   employeeForm: FormGroup;
   employee: Employee;
 
