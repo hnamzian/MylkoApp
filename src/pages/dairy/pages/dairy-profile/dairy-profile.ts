@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DairyProvider } from "../../../../providers/dairy/dairy";
 import { Dairy } from "../../../../models/dairy";
-import { Toast, ToastController } from "ionic-angular";
+import { Toast, ToastController, NavController } from "ionic-angular";
 import { DairyStorage } from "../../../../storage/dairy";
+import { HomePage } from "../../../home/home";
 
 @Component({
   selector: "dairy-profile",
@@ -18,6 +19,7 @@ export class DairyProfilePage implements OnInit {
   toast: Toast;
 
   constructor(
+    private navCtrl: NavController,
     private formBuilder: FormBuilder,
     private toastCtrl: ToastController,
     private dairyProvider: DairyProvider,
@@ -117,6 +119,10 @@ export class DairyProfilePage implements OnInit {
         }
       );
     });
+  }
+
+  navBack() {
+    this.navCtrl.push(HomePage);
   }
 
   showToast(message) {
