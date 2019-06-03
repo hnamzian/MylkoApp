@@ -13,6 +13,8 @@ import { HomePage } from "../../../home/home";
   templateUrl: "employee-list.html"
 })
 export class EmployeeListPage implements OnInit {
+  title = "لیست کارمندان";
+
   employees: Employee[];
 
   toast: Toast;
