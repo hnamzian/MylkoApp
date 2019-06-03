@@ -1,0 +1,20 @@
+navbar-header {
+  .header-container {
+    padding-top: 0px;
+    background-color: white;
+
+    .header-text {
+      right: 50%;
+      color: rgb(112, 112, 112);
+      font-size: 18px;
+    }
+
+    ion-icon {
+      margin-right: 20px;
+      margin-left: 20px;
+      margin-top: auto;
+      margin-bottom: auto;
+      font-size: 26px;
+    }
+  }
+}
