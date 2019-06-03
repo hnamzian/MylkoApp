@@ -6,6 +6,7 @@ import { EmployeesProvider } from "../../../../providers/employees/employees";
 import { DairyStorage } from "../../../../storage/dairy";
 import { Employee } from "../../../../models/employees";
 import { TrashBarCompponent } from "../../../core/components/trash-bar/trash-bar";
+import { HomePage } from "../../../home/home";
 
 @Component({
   selector: "employee-list",
@@ -102,6 +103,10 @@ export class EmployeeListPage implements OnInit {
         error => reject(error.error)
       );
     });
+  }
+
+  navBack() {
+    this.navCtrl.push(HomePage);
   }
 
   showToast(message) {
