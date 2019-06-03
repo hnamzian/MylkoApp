@@ -80,7 +80,7 @@ export class ProfilePage implements OnInit {
           }
         },
         error => {
-          resolve(error);
+          resolve(error.error.message);
         }
       );
     });
