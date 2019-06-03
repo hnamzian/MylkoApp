@@ -10,6 +10,8 @@ import { DairyStorage } from "../../../../storage/dairy";
   templateUrl: "dairy-profile.html"
 })
 export class DairyProfilePage implements OnInit {
+  title = "پروفایل دامداری";
+
   dairyProfileForm: FormGroup;
   dairy = {} as Dairy;
 
