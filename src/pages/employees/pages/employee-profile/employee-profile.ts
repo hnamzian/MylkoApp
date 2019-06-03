@@ -84,6 +84,10 @@ export class EmployeeProfilePage implements OnInit {
     });
   }
 
+  navBack() {
+    this.navCtrl.push(EmployeeListPage);
+  }
+
   showToast(message) {
     this.toast = this.toastCtrl.create({
       message: message,
