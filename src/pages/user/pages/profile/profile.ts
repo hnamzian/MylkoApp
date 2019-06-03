@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController, Toast } from "ionic-angular"
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AdminProvider } from "../../../../providers/admin/admin";
 import { ADMIN } from "../../../../models/admin";
+import { HomePage } from "../../../home/home";
 
 @Component({
   selector: "profile-page",
@@ -15,6 +16,7 @@ export class ProfilePage implements OnInit {
   toast: Toast;
 
   constructor(
+    private navCtrl: NavController,
     private toastCtrl: ToastController,
     private formBuilder: FormBuilder,
     private adminProvider: AdminProvider
@@ -101,6 +103,10 @@ export class ProfilePage implements OnInit {
         }
       );
     });
+  }
+
+  navBack() {
+    this.navCtrl.push(HomePage);
   }
 
   showToast(message) {
